@@ -22,6 +22,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'reportes' => ['ver'],
         'informacion sensible' => ['acceder'],
         'ia' => ['usar', 'ver historial', 'configurar'],
+        'imagenes' => ['ver', 'crear', 'editar', 'eliminar'],
     ];
 
     public function run(): void
@@ -43,15 +44,18 @@ class RolesAndPermissionsSeeder extends Seeder
             'Marketing' => [
                 'ver productos', 'crear productos', 'editar productos', 'publicar productos', 'exportar productos',
                 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'usar ia', 'ver historial ia',
+                'ver imagenes', 'crear imagenes', 'editar imagenes',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
+                'ver imagenes', 'crear imagenes', 'editar imagenes', 'eliminar imagenes',
             ],
             'Ventas' => [
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
             ],
             'Editor' => [
                 'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
+                'ver imagenes', 'crear imagenes',
             ],
             'Analista' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia',

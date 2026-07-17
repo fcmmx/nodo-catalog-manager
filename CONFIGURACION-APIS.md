@@ -72,9 +72,15 @@ Qué falta (depende de NODO 360): la clave de API real. Mientras no se configure
 
 No implementado en esta fase. Se integrará como parte del módulo de Growth Marketing y del generador de landing pages en una fase posterior.
 
-## Inteligencia artificial — generación de imágenes — ⏳ Pendiente (Fase 3)
+## Generador de imágenes — ✅ Listo (Fase 3)
 
-La generación de texto con IA ya está lista (ver arriba). La generación de la **imagen en sí** (plantillas gráficas, composición, proveedores de generación de imágenes) es la Fase 3 y todavía no está construida. Mientras tanto, el generador de contenido puede crear el **prompt de imagen** en texto, para usarlo manualmente en el generador de imágenes que prefieras.
+El generador de imágenes (`Imágenes → Generador de imágenes`) compone imágenes comerciales completas (fondo, logotipo, título, subtítulo, precio, CTA, QR, pie de marca) sin depender de ninguna API externa — el motor de composición usa GD (Intervention Image) que ya viene con PHP en Hostinger.
+
+La **única parte opcional** que requiere una API externa es generar el **fondo** de la imagen con inteligencia artificial (en vez de subir una imagen o usar un degradado). Esa opción:
+
+- Reutiliza la misma clave de API configurada en Configuración → IA.
+- Solo funciona con el proveedor **OpenAI** (endpoint de generación de imágenes DALL·E). Si el proveedor configurado es Google, la interfaz lo indica claramente y sugiere subir una imagen manualmente en su lugar — no se simula ninguna imagen.
+- Si no hay ninguna clave configurada, la opción "Generar con IA" muestra una advertencia explicando cómo activarla, sin bloquear las demás opciones de fondo (degradado, subir imagen, imagen del producto), que funcionan siempre.
 
 ## Proveedores de email marketing (Brevo, Mailgun, SendGrid, Amazon SES) — ⏳ Pendiente (fase futura)
 
@@ -90,5 +96,6 @@ El envío transaccional básico (recuperación de contraseña) ya funciona vía 
 | IA generativa — texto | ✅ Listo para configurar (Fase 2) | Sí, clave de API de OpenAI o Google |
 | Meta (Facebook/Instagram/WhatsApp) | ⏳ Fase futura | Sí, cuando se construya |
 | Google (Ads/Analytics/GTM) | ⏳ Fase futura | Sí, cuando se construya |
-| IA generativa — imágenes | ⏳ Fase futura (Fase 3) | Sí, cuando se construya |
+| Generador de imágenes (composición) | ✅ Listo (Fase 3) | No |
+| IA generativa — fondo de imagen (opcional) | ✅ Listo para configurar (Fase 3) | Sí, misma clave de OpenAI |
 | Email marketing (Brevo/Mailgun/SES/SendGrid) | ⏳ Fase futura | Sí, cuando se construya |

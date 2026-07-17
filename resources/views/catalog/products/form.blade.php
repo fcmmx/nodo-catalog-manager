@@ -254,7 +254,14 @@
                 </div>
 
                 <div class="nodo-card p-6">
-                    <h2 class="mb-4 text-sm font-semibold text-slate-900 dark:text-white">Imagen principal</h2>
+                    <div class="mb-4 flex items-center justify-between">
+                        <h2 class="text-sm font-semibold text-slate-900 dark:text-white">Imagen principal</h2>
+                        @if ($product->exists)
+                            @can('ver imagenes')
+                                <a href="{{ route('images.generator', ['product_id' => $product->id]) }}" class="text-xs font-medium text-blue-600 hover:underline dark:text-blue-400">Generar imagen comercial</a>
+                            @endcan
+                        @endif
+                    </div>
                     @if ($product->main_image)
                         <img src="{{ $product->imageUrl() }}" class="mb-3 aspect-video w-full rounded-lg object-cover" alt="{{ $product->name }}">
                     @endif
@@ -267,7 +274,7 @@
                                 <x-ai.assist-button target="ai_image_prompt_output" task="prompt_imagen" :tema="old('name', $product->name)" label="Generar prompt con IA" />
                             </div>
                             <textarea id="ai_image_prompt_output" rows="3" class="nodo-input text-xs" placeholder="Genera un prompt en inglés listo para pegar en tu herramienta de generación de imágenes preferida." readonly></textarea>
-                            <p class="mt-1 text-xs text-slate-400">La generación de la imagen en sí llega en una fase posterior; por ahora este prompt se puede usar manualmente en el generador de imágenes que prefieras.</p>
+                            <p class="mt-1 text-xs text-slate-400">Copia este prompt y pégalo en "Generar imagen comercial" (arriba) al elegir el origen de fondo "Generar con IA".</p>
                         </div>
                     @endcan
 

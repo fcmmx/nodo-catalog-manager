@@ -14,6 +14,8 @@ use App\Http\Controllers\Catalog\CollectionController;
 use App\Http\Controllers\Catalog\ImportExportController;
 use App\Http\Controllers\Catalog\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Images\GeneratorController as ImageGeneratorController;
+use App\Http\Controllers\Images\TemplateController as ImageTemplateController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -93,5 +95,20 @@ Route::middleware('auth')->group(function () {
         Route::post('generaciones/{generation}/aprobar', [ContentGeneratorController::class, 'approve'])->name('approve')->middleware('permission:usar ia');
         Route::post('generaciones/{generation}/rechazar', [ContentGeneratorController::class, 'reject'])->name('reject')->middleware('permission:usar ia');
         Route::get('historial', [GenerationLogController::class, 'index'])->name('history')->middleware('permission:ver historial ia');
+    });
+
+    Route::prefix('imagenes')->name('images.')->middleware('permission:ver imagenes')->group(function () {
+        Route::resource('plantillas', ImageTemplateController::class)
+            ->parameters(['plantillas' => 'template'])
+            ->except(['show'])
+            ->names('templates');
+
+        Route::get('generador', [ImageGeneratorController::class, 'index'])->name('generator');
+        Route::post('generar', [ImageGeneratorController::class, 'store'])->name('generate')->middleware('permission:crear imagenes');
+        Route::get('historial', [ImageGeneratorController::class, 'history'])->name('history');
+        Route::get('generaciones/{generation}', [ImageGeneratorController::class, 'show'])->name('generations.show');
+        Route::delete('generaciones/{generation}', [ImageGeneratorController::class, 'destroy'])->name('generations.destroy')->middleware('permission:eliminar imagenes');
+        Route::post('generaciones/{generation}/usar-principal', [ImageGeneratorController::class, 'useAsMainImage'])->name('generations.use-main')->middleware('permission:editar imagenes');
+        Route::post('generaciones/{generation}/galeria', [ImageGeneratorController::class, 'addToGallery'])->name('generations.add-gallery')->middleware('permission:editar imagenes');
     });
 });

@@ -109,14 +109,25 @@ Menú lateral → **Inteligencia Artificial → Generador de contenido** (requie
 3. Para contenido que no está ligado a un producto (asuntos de email, publicaciones para redes, contenido de landing page, traducciones, cambios de tono, resúmenes), usa la página general del **Generador de contenido**, elige el tipo de contenido y completa los campos que te pida.
 4. Cada generación queda registrada en **Inteligencia Artificial → Historial de uso** (requiere permiso "ver historial ia"): usuario, fecha, producto, modelo, tokens consumidos y costo aproximado.
 
-## 11. Mi perfil
+## 11. Generador de imágenes
+
+Menú lateral → **Imágenes → Generador de imágenes** (requiere permiso "ver/crear imagenes").
+
+1. Elige una **plantilla** (la "Plantilla maestra NODO 360" mantiene la identidad de marca) y, opcionalmente, un **producto relacionado** — esto autocompleta el título y subtítulo.
+2. Completa título, subtítulo, texto de precio, llamada a la acción y, si quieres, una URL para el código QR.
+3. Elige el **origen del fondo**: degradado de marca, imagen que subas, imagen principal del producto, o generado con inteligencia artificial (esta última opción requiere que un administrador haya configurado y habilitado el proveedor OpenAI en Configuración de IA; mientras tanto se explica claramente en pantalla).
+4. Al generar, verás la imagen final con botones para **descargarla en PNG**, **usarla como imagen principal del producto** o **agregarla a su galería**.
+5. **Imágenes → Plantillas** te permite crear tus propias plantillas (colores, formato, posición del título, si muestra precio/QR) además de las 6 incluidas. La plantilla maestra no se puede eliminar.
+6. **Imágenes → Historial de imágenes** muestra todas las imágenes generadas, filtrables por producto.
+
+## 12. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 12. Modo claro/oscuro
+## 13. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 13. Módulos en fases siguientes
+## 14. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: generación de imágenes con IA, redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA ya está disponible (sección 10). Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10) y el **generador de imágenes** (sección 11) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

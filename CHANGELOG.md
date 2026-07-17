@@ -1,5 +1,26 @@
 # Changelog — NODO Catalog Manager
 
+## [1.2.0-fase3] — 2026-07-17
+
+Tercera entrega funcional: generador de imágenes comerciales (Fase 3 de la hoja de ruta).
+
+### Agregado
+
+- Motor de composición de imágenes propio (GD vía Intervention Image): fondo (degradado de marca, imagen subida, imagen del producto o generado con IA), superposición oscura para legibilidad, logotipo de la empresa, título, subtítulo, insignia de precio, botón de llamada a la acción, código QR y pie de marca — todo renderizado con tipografía real (Inter, licencia OFL, incluida en el proyecto).
+- 5 tamaños del brief: cuadrado (1080×1080), vertical (1080×1350), historia (1080×1920), horizontal (1200×628) y portada de colección (1920×1080).
+- Plantilla maestra NODO 360 preconfigurada con la identidad visual de marca, más 5 plantillas adicionales listas para usar.
+- CRUD de plantillas propias (nombre, formato, colores, posición del título, mostrar precio/QR, pie de marca).
+- Generador (`/imagenes/generador`): elige plantilla, producto relacionado (opcional, autocompleta título/subtítulo), textos, y origen del fondo (degradado, imagen subida, imagen del producto, o generado con IA vía DALL·E cuando el proveedor OpenAI está configurado).
+- Resultado descargable en PNG, con acciones para usarla como imagen principal del producto o agregarla a su galería.
+- Historial de imágenes generadas, filtrable por producto.
+- Enlace directo "Generar imagen comercial" desde el formulario de producto.
+- Permisos granulares nuevos: `ver imagenes`, `crear imagenes`, `editar imagenes`, `eliminar imagenes`.
+- 6 pruebas automatizadas adicionales (60 en total).
+
+### Nota importante
+
+La composición manual (degradado, imagen subida, imagen del producto) funciona sin ninguna credencial externa. Solo la opción "Generar con IA" para el fondo requiere la misma clave de OpenAI configurada en el módulo de IA de la Fase 2 — si no está configurada, esa opción muestra una advertencia clara en vez de simular un resultado.
+
 ## [1.1.0-fase2] — 2026-07-17
 
 Segunda entrega funcional: módulo de inteligencia artificial para generación de texto (Fase 2 de la hoja de ruta).
@@ -54,7 +75,7 @@ Primera entrega funcional del sistema (Fase 1 — Núcleo), acordada con el prop
 Cada fase se entregará completa y funcional de extremo a extremo, sin simulaciones:
 
 - ~~**Fase 2 — Inteligencia artificial (texto)**~~ ✅ Entregada — ver arriba.
-- **Fase 3 — Generador de imágenes**: plantillas gráficas, conexión a proveedores de generación de imágenes, composición con elementos propios cuando no haya API configurada.
+- ~~**Fase 3 — Generador de imágenes**~~ ✅ Entregada — ver arriba.
 - **Fase 4 — Redes sociales**: calendario editorial, preparación y programación de publicaciones, estados de publicación, integración con Meta cuando existan credenciales.
 - **Fase 5 — Email marketing**: contactos, listas, segmentos, constructor visual de correos, campañas, automatizaciones, integración SMTP/Brevo/Mailgun/SES/SendGrid.
 - **Fase 6 — Landing pages**: generador de páginas por producto, SEO, Open Graph, analítica, captura de prospectos.

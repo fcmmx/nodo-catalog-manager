@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 + Fase 2)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 + Fase 2 + Fase 3)
 
 ## Diagrama entidad-relación
 
@@ -7,7 +7,10 @@ erDiagram
     USERS ||--o{ PRODUCTS : "crea/edita"
     USERS ||--o{ IMPORT_BATCHES : "sube"
     USERS ||--o{ AI_GENERATIONS : "solicita"
+    USERS ||--o{ IMAGE_GENERATIONS : "genera"
     PRODUCTS ||--o{ AI_GENERATIONS : "referencia"
+    PRODUCTS ||--o{ IMAGE_GENERATIONS : "referencia"
+    IMAGE_TEMPLATES ||--o{ IMAGE_GENERATIONS : "usa"
     COLLECTIONS ||--o{ CATEGORIES : "agrupa"
     COLLECTIONS ||--o{ PRODUCTS : "clasifica"
     CATEGORIES ||--o{ PRODUCTS : "clasifica"
@@ -122,6 +125,41 @@ erDiagram
         string status
     }
 
+    IMAGE_TEMPLATES {
+        bigint id PK
+        string name
+        string slug UK
+        string format
+        int width
+        int height
+        string background_type
+        string background_value
+        boolean overlay_gradient
+        string primary_color
+        string accent_color
+        string title_position
+        boolean show_price
+        boolean show_qr
+        string footer_text
+        boolean is_master
+    }
+
+    IMAGE_GENERATIONS {
+        bigint id PK
+        bigint user_id FK
+        bigint template_id FK
+        bigint product_id FK
+        string title
+        string subtitle
+        string cta_text
+        string price_text
+        string qr_target_url
+        string background_source
+        string file_path
+        text ai_prompt
+        string status
+    }
+
     ROLES {
         bigint id PK
         string name UK
@@ -160,6 +198,8 @@ erDiagram
 | `settings` | Configuración clave-valor del sistema (empresa, marca, regional, seguridad, IA), con soporte para valores cifrados. |
 | `activity_log` | Auditoría de acciones del sistema (paquete spatie/laravel-activitylog). |
 | `ai_generations` | Registro de cada solicitud de generación de contenido con IA: usuario, producto (opcional), tarea, proveedor, modelo, prompt, respuesta, tokens, costo aproximado y estado (completado/aprobado/rechazado/error). |
+| `image_templates` | Plantillas de imagen reutilizables: formato, colores, posición del título, si muestra precio/QR, pie de marca. Incluye la plantilla maestra de NODO 360. |
+| `image_generations` | Cada imagen compuesta: plantilla usada, producto (opcional), textos, origen del fondo, ruta del archivo generado y estado. |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave

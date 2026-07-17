@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             AdminUserSeeder::class,
             CollectionsAndProductsSeeder::class,
+            ImageTemplatesSeeder::class,
         ]);
     }
 }

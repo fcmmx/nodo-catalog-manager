@@ -80,6 +80,20 @@ Todas las rutas listadas abajo:
 | POST | `/ia/generaciones/{id}/rechazar` | `usar ia` |
 | GET | `/ia/historial` | `ver historial ia` |
 
+## Generador de imágenes (Fase 3)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET/POST | `/imagenes/plantillas` | `ver imagenes` / `crear imagenes` |
+| GET/PUT/DELETE | `/imagenes/plantillas/{id}` | `editar imagenes` / `eliminar imagenes` |
+| GET | `/imagenes/generador` | `ver imagenes` |
+| POST | `/imagenes/generar` | `crear imagenes` |
+| GET | `/imagenes/historial` | `ver imagenes` |
+| GET | `/imagenes/generaciones/{id}` | `ver imagenes` |
+| DELETE | `/imagenes/generaciones/{id}` | `eliminar imagenes` |
+| POST | `/imagenes/generaciones/{id}/usar-principal` | `editar imagenes` |
+| POST | `/imagenes/generaciones/{id}/galeria` | `editar imagenes` |
+
 ## Instalador
 
 | Método | Ruta | Notas |
