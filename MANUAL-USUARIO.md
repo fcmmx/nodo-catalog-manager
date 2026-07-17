@@ -100,14 +100,23 @@ Menú lateral → **Configuración** (requiere permiso de administración).
 - **Marca**: logotipo, favicon, colores primario y de acento, texto principal y llamada a la acción.
 - **Seguridad de inicio de sesión**: número de intentos fallidos antes de bloquear una cuenta y minutos de bloqueo.
 
-## 10. Mi perfil
+## 10. Generador de contenido con IA
+
+Menú lateral → **Inteligencia Artificial → Generador de contenido** (requiere permiso "usar ia").
+
+1. Un administrador debe configurar primero un proveedor en **Inteligencia Artificial → Configuración de IA**: elige OpenAI (o un proveedor compatible) o Google, indica el modelo, la URL base y pega la clave de API. Usa el botón **Probar conexión** para confirmar que funciona. Mientras no haya una clave configurada, el botón "Generar con IA" permanece deshabilitado en todo el sistema — no se simula ningún resultado.
+2. Con la IA configurada, verás enlaces **Generar con IA** junto a los campos de descripción, beneficios, características, palabras clave y mensaje de WhatsApp dentro del formulario de producto. Al generar, el texto aparece en un cuadro editable con las opciones **Usar este texto**, **Regenerar** o **Cerrar** — nunca se inserta automáticamente sin tu confirmación.
+3. Para contenido que no está ligado a un producto (asuntos de email, publicaciones para redes, contenido de landing page, traducciones, cambios de tono, resúmenes), usa la página general del **Generador de contenido**, elige el tipo de contenido y completa los campos que te pida.
+4. Cada generación queda registrada en **Inteligencia Artificial → Historial de uso** (requiere permiso "ver historial ia"): usuario, fecha, producto, modelo, tokens consumidos y costo aproximado.
+
+## 11. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 11. Modo claro/oscuro
+## 12. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 12. Módulos en fases siguientes
+## 13. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos en esta fase** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: generación de imágenes con IA, generación de texto con IA, redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: generación de imágenes con IA, redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA ya está disponible (sección 10). Ver `CHANGELOG.md` para la hoja de ruta.

@@ -15,7 +15,7 @@
 - **Validación de archivos subidos**: tipo MIME, extensión y tamaño máximo validados en servidor (no solo en el navegador) para imágenes de productos, logotipo/favicon y archivos de importación.
 - **Nombres de archivo aleatorios**: Laravel genera nombres únicos al guardar archivos subidos, evitando colisiones y adivinación de rutas.
 - **Instalador autoblocante**: `/install` deja de estar accesible en cuanto termina la instalación (archivo `storage/app/installed.lock`) y responde 404 a cualquier intento posterior.
-- **Claves de API cifradas**: el modelo `Setting` soporta guardar valores cifrados (`Setting::set($key, $value, encrypted: true)`) y nunca los expone completos en pantalla — mecanismo ya construido para cuando se conecten integraciones externas en fases futuras.
+- **Claves de API cifradas**: el modelo `Setting` soporta guardar valores cifrados (`Setting::set($key, $value, encrypted: true)`) y nunca los expone completos en pantalla. Ya en uso real por el módulo de IA (Fase 2): la clave del proveedor de IA se guarda cifrada y solo se muestran sus últimos 4 caracteres.
 - **Sin claves reales en el código**: este repositorio no contiene tokens, contraseñas ni claves de API reales; todo se configura por variables de entorno fuera del control de versiones (`.env` está en `.gitignore`).
 
 ## Recomendaciones después de instalar

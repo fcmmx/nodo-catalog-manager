@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 + Fase 2)
 
 ## Diagrama entidad-relación
 
@@ -6,6 +6,8 @@
 erDiagram
     USERS ||--o{ PRODUCTS : "crea/edita"
     USERS ||--o{ IMPORT_BATCHES : "sube"
+    USERS ||--o{ AI_GENERATIONS : "solicita"
+    PRODUCTS ||--o{ AI_GENERATIONS : "referencia"
     COLLECTIONS ||--o{ CATEGORIES : "agrupa"
     COLLECTIONS ||--o{ PRODUCTS : "clasifica"
     CATEGORIES ||--o{ PRODUCTS : "clasifica"
@@ -105,6 +107,21 @@ erDiagram
         boolean is_encrypted
     }
 
+    AI_GENERATIONS {
+        bigint id PK
+        bigint user_id FK
+        bigint product_id FK
+        string task
+        string provider
+        string model
+        longtext prompt
+        longtext response
+        int input_tokens
+        int output_tokens
+        decimal estimated_cost
+        string status
+    }
+
     ROLES {
         bigint id PK
         string name UK
@@ -140,8 +157,9 @@ erDiagram
 | `products` | Catálogo de productos y servicios, con todos los campos comerciales, de precio, SEO y publicación descritos en el brief. |
 | `product_images` | Galería de imágenes adicionales por producto (la imagen principal se guarda directamente en `products.main_image`). |
 | `import_batches` | Historial y progreso de cada importación masiva, incluyendo el mapeo de columnas usado y el detalle de errores por fila. |
-| `settings` | Configuración clave-valor del sistema (empresa, marca, regional, seguridad), con soporte para valores cifrados. |
+| `settings` | Configuración clave-valor del sistema (empresa, marca, regional, seguridad, IA), con soporte para valores cifrados. |
 | `activity_log` | Auditoría de acciones del sistema (paquete spatie/laravel-activitylog). |
+| `ai_generations` | Registro de cada solicitud de generación de contenido con IA: usuario, producto (opcional), tarea, proveedor, modelo, prompt, respuesta, tokens, costo aproximado y estado (completado/aprobado/rechazado/error). |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave

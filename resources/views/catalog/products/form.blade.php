@@ -76,23 +76,48 @@
                 </div>
 
                 <div class="nodo-card p-6">
-                    <h2 class="mb-4 text-sm font-semibold text-slate-900 dark:text-white">Contenido</h2>
+                    <div class="mb-4 flex items-center justify-between">
+                        <h2 class="text-sm font-semibold text-slate-900 dark:text-white">Contenido</h2>
+                        @can('usar ia')
+                            <span class="text-xs text-slate-400">Usa los enlaces "Generar con IA" junto a cada campo para redactar con ayuda de inteligencia artificial.</span>
+                        @endcan
+                    </div>
                     <div>
-                        <label class="nodo-label">Descripción corta</label>
-                        <textarea name="short_description" rows="2" class="nodo-input">{{ old('short_description', $product->short_description) }}</textarea>
+                        <div class="mb-1.5 flex items-center justify-between">
+                            <label for="short_description" class="nodo-label mb-0">Descripción corta</label>
+                            @can('usar ia')
+                                <x-ai.assist-button target="short_description" task="descripcion_corta" :tema="old('name', $product->name)" />
+                            @endcan
+                        </div>
+                        <textarea name="short_description" id="short_description" rows="2" class="nodo-input">{{ old('short_description', $product->short_description) }}</textarea>
                     </div>
                     <div class="mt-5">
-                        <label class="nodo-label">Descripción completa</label>
-                        <textarea name="description" rows="6" class="nodo-input">{{ old('description', $product->description) }}</textarea>
+                        <div class="mb-1.5 flex items-center justify-between">
+                            <label for="description" class="nodo-label mb-0">Descripción completa</label>
+                            @can('usar ia')
+                                <x-ai.assist-button target="description" task="descripcion_completa" :tema="old('name', $product->name)" />
+                            @endcan
+                        </div>
+                        <textarea name="description" id="description" rows="6" class="nodo-input">{{ old('description', $product->description) }}</textarea>
                     </div>
                     <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
                         <div>
-                            <label class="nodo-label">Beneficios (uno por línea)</label>
-                            <textarea name="benefits" rows="5" class="nodo-input">{{ old('benefits', $product->benefits) }}</textarea>
+                            <div class="mb-1.5 flex items-center justify-between">
+                                <label for="benefits" class="nodo-label mb-0">Beneficios (uno por línea)</label>
+                                @can('usar ia')
+                                    <x-ai.assist-button target="benefits" task="beneficios" :tema="old('name', $product->name)" />
+                                @endcan
+                            </div>
+                            <textarea name="benefits" id="benefits" rows="5" class="nodo-input">{{ old('benefits', $product->benefits) }}</textarea>
                         </div>
                         <div>
-                            <label class="nodo-label">Características (una por línea)</label>
-                            <textarea name="features" rows="5" class="nodo-input">{{ old('features', $product->features) }}</textarea>
+                            <div class="mb-1.5 flex items-center justify-between">
+                                <label for="features" class="nodo-label mb-0">Características (una por línea)</label>
+                                @can('usar ia')
+                                    <x-ai.assist-button target="features" task="caracteristicas" :tema="old('name', $product->name)" />
+                                @endcan
+                            </div>
+                            <textarea name="features" id="features" rows="5" class="nodo-input">{{ old('features', $product->features) }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -153,8 +178,13 @@
                         </div>
                     </div>
                     <div class="mt-5">
-                        <label class="nodo-label">Mensaje predeterminado de WhatsApp</label>
-                        <textarea name="whatsapp_message" rows="2" class="nodo-input">{{ old('whatsapp_message', $product->whatsapp_message) }}</textarea>
+                        <div class="mb-1.5 flex items-center justify-between">
+                            <label for="whatsapp_message" class="nodo-label mb-0">Mensaje predeterminado de WhatsApp</label>
+                            @can('usar ia')
+                                <x-ai.assist-button target="whatsapp_message" task="mensaje_whatsapp" :tema="old('name', $product->name)" />
+                            @endcan
+                        </div>
+                        <textarea name="whatsapp_message" id="whatsapp_message" rows="2" class="nodo-input">{{ old('whatsapp_message', $product->whatsapp_message) }}</textarea>
                     </div>
                 </div>
 
@@ -166,8 +196,13 @@
                             <input name="meta_title" value="{{ old('meta_title', $product->meta_title) }}" class="nodo-input">
                         </div>
                         <div>
-                            <label class="nodo-label">Palabras clave</label>
-                            <input name="keywords" value="{{ old('keywords', $product->keywords) }}" class="nodo-input">
+                            <div class="mb-1.5 flex items-center justify-between">
+                                <label for="keywords" class="nodo-label mb-0">Palabras clave</label>
+                                @can('usar ia')
+                                    <x-ai.assist-button target="keywords" task="palabras_clave" :tema="old('name', $product->name)" />
+                                @endcan
+                            </div>
+                            <input name="keywords" id="keywords" value="{{ old('keywords', $product->keywords) }}" class="nodo-input">
                         </div>
                     </div>
                     <div class="mt-5">
@@ -224,6 +259,17 @@
                         <img src="{{ $product->imageUrl() }}" class="mb-3 aspect-video w-full rounded-lg object-cover" alt="{{ $product->name }}">
                     @endif
                     <input type="file" name="main_image" accept="image/png,image/jpeg,image/webp" class="nodo-input">
+
+                    @can('usar ia')
+                        <div class="mt-4 border-t border-slate-100 pt-4 dark:border-slate-800">
+                            <div class="mb-1.5 flex items-center justify-between">
+                                <label for="ai_image_prompt_output" class="nodo-label mb-0">Prompt para generador de imágenes</label>
+                                <x-ai.assist-button target="ai_image_prompt_output" task="prompt_imagen" :tema="old('name', $product->name)" label="Generar prompt con IA" />
+                            </div>
+                            <textarea id="ai_image_prompt_output" rows="3" class="nodo-input text-xs" placeholder="Genera un prompt en inglés listo para pegar en tu herramienta de generación de imágenes preferida." readonly></textarea>
+                            <p class="mt-1 text-xs text-slate-400">La generación de la imagen en sí llega en una fase posterior; por ahora este prompt se puede usar manualmente en el generador de imágenes que prefieras.</p>
+                        </div>
+                    @endcan
 
                     <h2 class="mb-2 mt-6 text-sm font-semibold text-slate-900 dark:text-white">Galería</h2>
                     @if ($product->exists && $product->images->isNotEmpty())

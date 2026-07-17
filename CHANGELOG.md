@@ -1,5 +1,25 @@
 # Changelog — NODO Catalog Manager
 
+## [1.1.0-fase2] — 2026-07-17
+
+Segunda entrega funcional: módulo de inteligencia artificial para generación de texto (Fase 2 de la hoja de ruta).
+
+### Agregado
+
+- Configuración de proveedor de IA (Configuración → IA): OpenAI o cualquier proveedor compatible, y Google Gemini, con modelo y URL base configurables.
+- Clave de API cifrada en base de datos, nunca mostrada completa, con botón de prueba de conexión real.
+- 19 tareas de generación de texto: nombre comercial, descripción corta, descripción completa, beneficios, características, preguntas frecuentes, palabras clave, metadatos SEO, datos estructurados (JSON-LD), publicaciones para redes, asuntos de email, contenido para landing page, mensajes de WhatsApp, prompts de imagen, mejorar texto, cambiar tono, crear variantes, resumir y traducir.
+- Botones "Generar con IA" contextuales en el formulario de producto (descripciones, beneficios, características, palabras clave, mensaje de WhatsApp, prompt de imagen) con flujo de revisión: usar, regenerar o cerrar — nunca se guarda sin confirmación del usuario.
+- Generador de contenido general (`/ia/generador`) para contenido no ligado a un producto.
+- Historial de uso de IA (`/ia/historial`): usuario, fecha, producto, modelo, tokens de entrada/salida y costo aproximado por solicitud.
+- Manejo explícito de errores sin inventar respuestas: sin credenciales configuradas, token inválido, cuota excedida, límite de solicitudes, error de red.
+- Permisos granulares nuevos: `usar ia`, `ver historial ia`, `configurar ia`, asignados a los roles correspondientes.
+- 12 pruebas automatizadas adicionales (54 en total) con HTTP simulado para cada escenario de proveedor.
+
+### Nota importante
+
+Este módulo requiere que NODO 360 proporcione una clave de API real de OpenAI o Google. Hasta entonces, el botón "Generar con IA" permanece deshabilitado en toda la interfaz — no hay ninguna clave de prueba ni respuesta simulada en el código.
+
 ## [1.0.0-fase1] — 2026-07-17
 
 Primera entrega funcional del sistema (Fase 1 — Núcleo), acordada con el propietario del proyecto para desarrollar el sistema completo por fases en lugar de intentar entregar los 27 módulos del brief original en una sola pasada.
@@ -33,7 +53,7 @@ Primera entrega funcional del sistema (Fase 1 — Núcleo), acordada con el prop
 
 Cada fase se entregará completa y funcional de extremo a extremo, sin simulaciones:
 
-- **Fase 2 — Inteligencia artificial**: conexión a proveedores de IA (configuración cifrada, generación de textos, SEO, prompts de imagen, registro de uso y costo, flujo de revisión/aprobación).
+- ~~**Fase 2 — Inteligencia artificial (texto)**~~ ✅ Entregada — ver arriba.
 - **Fase 3 — Generador de imágenes**: plantillas gráficas, conexión a proveedores de generación de imágenes, composición con elementos propios cuando no haya API configurada.
 - **Fase 4 — Redes sociales**: calendario editorial, preparación y programación de publicaciones, estados de publicación, integración con Meta cuando existan credenciales.
 - **Fase 5 — Email marketing**: contactos, listas, segmentos, constructor visual de correos, campañas, automatizaciones, integración SMTP/Brevo/Mailgun/SES/SendGrid.

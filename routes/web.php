@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\AiSettingsController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Ai\ContentGeneratorController;
+use App\Http\Controllers\Ai\GenerationLogController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
@@ -77,4 +80,18 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/configuracion', [SettingsController::class, 'edit'])->name('admin.settings.edit')->middleware('permission:ver configuracion');
     Route::put('/admin/configuracion', [SettingsController::class, 'update'])->name('admin.settings.update')->middleware('permission:administrar configuracion');
+
+    Route::prefix('admin/ia')->name('admin.ai.')->middleware('permission:configurar ia')->group(function () {
+        Route::get('configuracion', [AiSettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('configuracion', [AiSettingsController::class, 'update'])->name('settings.update');
+        Route::post('configuracion/probar', [AiSettingsController::class, 'test'])->name('settings.test');
+    });
+
+    Route::prefix('ia')->name('ai.')->group(function () {
+        Route::get('generador', [ContentGeneratorController::class, 'index'])->name('generator')->middleware('permission:usar ia');
+        Route::post('generar', [ContentGeneratorController::class, 'generate'])->name('generate')->middleware('permission:usar ia');
+        Route::post('generaciones/{generation}/aprobar', [ContentGeneratorController::class, 'approve'])->name('approve')->middleware('permission:usar ia');
+        Route::post('generaciones/{generation}/rechazar', [ContentGeneratorController::class, 'reject'])->name('reject')->middleware('permission:usar ia');
+        Route::get('historial', [GenerationLogController::class, 'index'])->name('history')->middleware('permission:ver historial ia');
+    });
 });

@@ -67,6 +67,19 @@ Todas las rutas listadas abajo:
 | GET | `/admin/configuracion` | `ver configuracion` |
 | PUT | `/admin/configuracion` | `administrar configuracion` |
 
+## Inteligencia artificial (Fase 2)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/admin/ia/configuracion` | `configurar ia` |
+| PUT | `/admin/ia/configuracion` | `configurar ia` |
+| POST | `/admin/ia/configuracion/probar` | `configurar ia` (prueba de conexión real con el proveedor configurado) |
+| GET | `/ia/generador` | `usar ia` |
+| POST | `/ia/generar` | `usar ia` (JSON: `task`, más `tema`/`texto`/`tono`/`idioma`/`canal`/`product_id` según la tarea) |
+| POST | `/ia/generaciones/{id}/aprobar` | `usar ia` |
+| POST | `/ia/generaciones/{id}/rechazar` | `usar ia` |
+| GET | `/ia/historial` | `ver historial ia` |
+
 ## Instalador
 
 | Método | Ruta | Notas |

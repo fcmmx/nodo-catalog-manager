@@ -48,6 +48,19 @@ class SettingsSeeder extends Seeder
             Setting::set($key, $value, 'security');
         }
 
+        // El proveedor de IA queda deshabilitado hasta que el propietario del
+        // sistema configure una clave de API real desde Configuración → IA.
+        $ai = [
+            'ai_enabled' => '0',
+            'ai_provider' => 'openai',
+            'ai_model' => 'gpt-4o-mini',
+            'ai_base_url' => 'https://api.openai.com/v1',
+        ];
+
+        foreach ($ai as $key => $value) {
+            Setting::set($key, $value, 'ai');
+        }
+
         Setting::set('installed', '1', 'system');
     }
 }

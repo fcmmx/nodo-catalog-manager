@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en la **Fase 1** de NODO Catalog Manager. Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido en esta fase, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 + Fase 2). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -29,6 +29,34 @@ Las imágenes de productos y de marca se guardan en `storage/app/public` y se si
 
 Si en el futuro se requiere almacenamiento en la nube (Amazon S3, etc.), Laravel lo soporta de forma nativa cambiando `FILESYSTEM_DISK` — **no incluido por defecto en esta fase** porque no se solicitaron credenciales de un proveedor de almacenamiento externo.
 
+## Inteligencia artificial — generación de texto — ✅ Listo para configurar (Fase 2)
+
+El módulo de generación de contenido con IA (Configuración → IA, y Generador de contenido en el menú lateral) ya está construido y probado con HTTP simulado — solo falta que NODO 360 proporcione una clave de API real de un proveedor.
+
+Proveedores soportados:
+
+- **OpenAI, o cualquier proveedor "compatible con OpenAI"** (Azure OpenAI, Groq, Together AI, servidores de modelos locales, etc.) — solo cambia la URL base en Configuración → IA.
+- **Google (Gemini)** — adaptador independiente para la API de `generateContent`.
+
+```
+# Configúralo desde el panel: Configuración → IA. No se hace por .env porque
+# la clave se guarda cifrada en la base de datos (tabla settings, columna
+# is_encrypted), nunca en texto plano ni en archivos versionados.
+```
+
+Qué SÍ está implementado y probado:
+
+- Configuración de proveedor, modelo y URL base desde el panel.
+- Clave de API cifrada, mostrada solo parcialmente (últimos 4 caracteres).
+- Botón "Probar conexión" que hace una llamada real de verificación.
+- 19 tareas de generación de texto (nombre comercial, descripciones, beneficios, características, FAQs, palabras clave, metadatos SEO, datos estructurados, publicaciones para redes, asuntos de email, contenido de landing page, mensajes de WhatsApp, prompts de imagen, mejorar texto, cambiar tono, crear variantes, resumir, traducir).
+- Botones "Generar con IA" contextuales en el formulario de producto, y un generador general (`/ia/generador`) para contenido no ligado a un producto.
+- Flujo de revisión: el contenido generado se muestra en un cuadro editable con opciones de usar, regenerar, aprobar o rechazar — **nunca se guarda automáticamente**.
+- Registro de cada solicitud (`/ia/historial`): usuario, fecha, producto, modelo, tokens de entrada/salida y costo aproximado.
+- Manejo explícito de errores: sin credenciales, token inválido/revocado, cuota excedida, límite de solicitudes, error de red — cada uno con un mensaje claro, sin inventar una respuesta.
+
+Qué falta (depende de NODO 360): la clave de API real. Mientras no se configure, el botón "Generar con IA" permanece deshabilitado en toda la interfaz — no se simula ninguna respuesta.
+
 ## Meta (Facebook/Instagram/WhatsApp) — ⏳ Pendiente (fase futura)
 
 **No implementado en esta fase.** El módulo de feed de Meta Commerce, publicación en redes sociales y el Agente IA para WhatsApp mediante la API oficial de Meta se construirán en una fase posterior, e incluirán:
@@ -44,9 +72,9 @@ Si en el futuro se requiere almacenamiento en la nube (Amazon S3, etc.), Laravel
 
 No implementado en esta fase. Se integrará como parte del módulo de Growth Marketing y del generador de landing pages en una fase posterior.
 
-## Inteligencia artificial (generación de texto e imágenes) — ⏳ Pendiente (fase futura)
+## Inteligencia artificial — generación de imágenes — ⏳ Pendiente (Fase 3)
 
-No implementado en esta fase. El mecanismo de almacenamiento cifrado de claves de API (`Setting::set(..., encrypted: true)`) ya existe y será reutilizado cuando se construya este módulo, junto con el registro de uso (usuario, fecha, producto, modelo, solicitud, respuesta, consumo) descrito en el proyecto original.
+La generación de texto con IA ya está lista (ver arriba). La generación de la **imagen en sí** (plantillas gráficas, composición, proveedores de generación de imágenes) es la Fase 3 y todavía no está construida. Mientras tanto, el generador de contenido puede crear el **prompt de imagen** en texto, para usarlo manualmente en el generador de imágenes que prefieras.
 
 ## Proveedores de email marketing (Brevo, Mailgun, SendGrid, Amazon SES) — ⏳ Pendiente (fase futura)
 
@@ -59,7 +87,8 @@ El envío transaccional básico (recuperación de contraseña) ya funciona vía 
 | Base de datos MySQL | ✅ Listo | Sí (ya solicitadas en el instalador) |
 | SMTP / correo | ✅ Listo para configurar | Sí (proveedor a elegir) |
 | Almacenamiento local | ✅ Listo | No |
+| IA generativa — texto | ✅ Listo para configurar (Fase 2) | Sí, clave de API de OpenAI o Google |
 | Meta (Facebook/Instagram/WhatsApp) | ⏳ Fase futura | Sí, cuando se construya |
 | Google (Ads/Analytics/GTM) | ⏳ Fase futura | Sí, cuando se construya |
-| IA generativa (texto/imagen) | ⏳ Fase futura | Sí, cuando se construya |
+| IA generativa — imágenes | ⏳ Fase futura (Fase 3) | Sí, cuando se construya |
 | Email marketing (Brevo/Mailgun/SES/SendGrid) | ⏳ Fase futura | Sí, cuando se construya |

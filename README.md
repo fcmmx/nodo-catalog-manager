@@ -4,10 +4,11 @@
 
 Sistema web para administrar el catálogo de productos y servicios de **NODO 360 MARKETING TECHNOLOGY**, desarrollado en Laravel 12 / PHP 8.2+ / MySQL, pensado para desplegarse en hosting compartido (Hostinger) sin depender de un servidor Node.js en producción.
 
-## Estado del proyecto: Fase 1 (Núcleo)
+## Estado del proyecto: Fase 1 + Fase 2
 
-Este repositorio contiene la **Fase 1** de un desarrollo por fases acordado con el propietario del sistema. Todo lo incluido aquí está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
+Este repositorio se desarrolla por fases, acordado con el propietario del sistema. Todo lo incluido está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
 
+**Fase 1 — Núcleo**
 - ✅ Instalador web guiado (`/install`)
 - ✅ Autenticación, roles y permisos (9 roles, permisos granulares)
 - ✅ Catálogo de productos y servicios (CRUD completo, campos del brief, edición y acciones masivas, papelera/restauración, duplicar, vista previa)
@@ -18,9 +19,17 @@ Este repositorio contiene la **Fase 1** de un desarrollo por fases acordado con 
 - ✅ Configuración de empresa, marca, moneda, zona horaria, seguridad de login
 - ✅ Registro de actividad (auditoría) de todo el sistema
 - ✅ Datos iniciales de NODO 360: 6 colecciones y 39 productos/servicios en borrador, listos para editar
-- ✅ 42 pruebas automatizadas (PHPUnit)
 
-**No incluido en esta fase** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): generador de imágenes con IA, generación de texto con IA, redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
+**Fase 2 — Inteligencia artificial (texto)**
+- ✅ Conexión configurable a OpenAI (o compatible) y Google Gemini, con clave de API cifrada
+- ✅ 19 tareas de generación de texto (descripciones, beneficios, SEO, WhatsApp, prompts de imagen, traducción, etc.)
+- ✅ Botones "Generar con IA" en el formulario de producto con flujo de revisión antes de guardar
+- ✅ Generador de contenido general e historial de uso con tokens y costo aproximado
+- ⚠️ Requiere que NODO 360 proporcione una clave de API real — mientras tanto, el botón permanece deshabilitado (no se simula ninguna respuesta)
+
+**54 pruebas automatizadas (PHPUnit)** en total.
+
+**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): generador de imágenes con IA, redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
 
 ## Tecnología
 

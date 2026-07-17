@@ -21,6 +21,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'actividad' => ['ver'],
         'reportes' => ['ver'],
         'informacion sensible' => ['acceder'],
+        'ia' => ['usar', 'ver historial', 'configurar'],
     ];
 
     public function run(): void
@@ -41,25 +42,25 @@ class RolesAndPermissionsSeeder extends Seeder
             'Administrador' => array_filter($allPermissions, fn ($p) => ! str_contains($p, 'informacion sensible')),
             'Marketing' => [
                 'ver productos', 'crear productos', 'editar productos', 'publicar productos', 'exportar productos',
-                'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes',
+                'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'usar ia', 'ver historial ia',
             ],
             'Diseñador' => [
-                'ver productos', 'editar productos', 'ver colecciones', 'ver categorias',
+                'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
             ],
             'Ventas' => [
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
             ],
             'Editor' => [
-                'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias',
+                'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
             ],
             'Analista' => [
-                'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes',
+                'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',
             ],
             'Solo lectura' => [
-                'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes',
+                'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes', 'ver historial ia',
             ],
         ];
 
