@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "NODO Catalog Manager - Fase 1",
+    "description": "Colección de pruebas para las rutas web de NODO Catalog Manager. Autenticación por cookie de sesión: ejecuta primero 'Login' para que Postman conserve la cookie, luego el resto de solicitudes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "admin_email", "value": "admin@nodo360mkt.site" },
+    { "key": "admin_password", "value": "Nodo360#Admin2026" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login (obtener cookie de sesión)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "email", "value": "{{admin_email}}" },
+                { "key": "password", "value": "{{admin_password}}" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/logout", "host": ["{{base_url}}"], "path": ["logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Ver dashboard",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/dashboard", "host": ["{{base_url}}"], "path": ["dashboard"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Catálogo - Productos",
+      "item": [
+        {
+          "name": "Listar productos",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/productos", "host": ["{{base_url}}"], "path": ["catalogo", "productos"] }
+          }
+        },
+        {
+          "name": "Exportar CSV",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/catalogo/productos/exportar?format=csv",
+              "host": ["{{base_url}}"],
+              "path": ["catalogo", "productos", "exportar"],
+              "query": [{ "key": "format", "value": "csv" }]
+            }
+          }
+        },
+        {
+          "name": "Vista previa de un producto",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/productos/1/vista-previa", "host": ["{{base_url}}"], "path": ["catalogo", "productos", "1", "vista-previa"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Catálogo - Colecciones y categorías",
+      "item": [
+        {
+          "name": "Listar colecciones",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/colecciones", "host": ["{{base_url}}"], "path": ["catalogo", "colecciones"] }
+          }
+        },
+        {
+          "name": "Listar categorías",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/categorias", "host": ["{{base_url}}"], "path": ["catalogo", "categorias"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Importar / Exportar",
+      "item": [
+        {
+          "name": "Descargar plantilla CSV",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/importar-exportar/plantilla", "host": ["{{base_url}}"], "path": ["catalogo", "importar-exportar", "plantilla"] }
+          }
+        },
+        {
+          "name": "Historial de importaciones",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/catalogo/importar-exportar", "host": ["{{base_url}}"], "path": ["catalogo", "importar-exportar"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Administración",
+      "item": [
+        {
+          "name": "Listar usuarios",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/admin/usuarios", "host": ["{{base_url}}"], "path": ["admin", "usuarios"] }
+          }
+        },
+        {
+          "name": "Actividad del sistema",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/admin/actividad", "host": ["{{base_url}}"], "path": ["admin", "actividad"] }
+          }
+        },
+        {
+          "name": "Ver configuración",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/admin/configuracion", "host": ["{{base_url}}"], "path": ["admin", "configuracion"] }
+          }
+        }
+      ]
+    }
+  ]
+}
