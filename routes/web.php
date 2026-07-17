@@ -18,6 +18,8 @@ use App\Http\Controllers\Images\GeneratorController as ImageGeneratorController;
 use App\Http\Controllers\Images\TemplateController as ImageTemplateController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Social\SocialAccountController;
+use App\Http\Controllers\Social\SocialPostController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
@@ -110,5 +112,24 @@ Route::middleware('auth')->group(function () {
         Route::delete('generaciones/{generation}', [ImageGeneratorController::class, 'destroy'])->name('generations.destroy')->middleware('permission:eliminar imagenes');
         Route::post('generaciones/{generation}/usar-principal', [ImageGeneratorController::class, 'useAsMainImage'])->name('generations.use-main')->middleware('permission:editar imagenes');
         Route::post('generaciones/{generation}/galeria', [ImageGeneratorController::class, 'addToGallery'])->name('generations.add-gallery')->middleware('permission:editar imagenes');
+    });
+
+    Route::prefix('redes')->name('social.')->middleware('permission:ver redes')->group(function () {
+        Route::resource('cuentas', SocialAccountController::class)
+            ->parameters(['cuentas' => 'account'])
+            ->except(['show'])
+            ->names('accounts');
+
+        Route::get('calendario/exportar', [SocialPostController::class, 'exportCalendar'])->name('posts.export');
+        Route::post('publicaciones/{post}/duplicar', [SocialPostController::class, 'duplicate'])->name('posts.duplicate')->middleware('permission:crear redes');
+        Route::post('publicaciones/{post}/aprobar', [SocialPostController::class, 'approve'])->name('posts.approve')->middleware('permission:aprobar redes');
+        Route::post('publicaciones/{post}/cancelar', [SocialPostController::class, 'cancel'])->name('posts.cancel')->middleware('permission:editar redes');
+        Route::post('publicaciones/{post}/publicar', [SocialPostController::class, 'publishNow'])->name('posts.publish')->middleware('permission:publicar redes');
+        Route::post('publicaciones/{post}/publicar-manual', [SocialPostController::class, 'markPublishedManually'])->name('posts.publish-manual')->middleware('permission:publicar redes');
+        Route::get('publicaciones/{post}/descargar', [SocialPostController::class, 'downloadImage'])->name('posts.download');
+        Route::resource('publicaciones', SocialPostController::class)
+            ->parameters(['publicaciones' => 'post'])
+            ->except(['show'])
+            ->names('posts');
     });
 });

@@ -4,7 +4,7 @@
 
 Sistema web para administrar el catálogo de productos y servicios de **NODO 360 MARKETING TECHNOLOGY**, desarrollado en Laravel 12 / PHP 8.2+ / MySQL, pensado para desplegarse en hosting compartido (Hostinger) sin depender de un servidor Node.js en producción.
 
-## Estado del proyecto: Fase 1 + Fase 2 + Fase 3
+## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4
 
 Este repositorio se desarrolla por fases, acordado con el propietario del sistema. Todo lo incluido está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
 
@@ -33,9 +33,16 @@ Este repositorio se desarrolla por fases, acordado con el propietario del sistem
 - ✅ Fondo desde degradado, imagen subida, imagen del producto, o generado con IA (requiere proveedor OpenAI configurado)
 - ✅ Descarga PNG, uso directo como imagen principal o en la galería del producto, historial de imágenes
 
-**60 pruebas automatizadas (PHPUnit)** en total.
+**Fase 4 — Redes sociales**
+- ✅ Cuentas conectadas por canal (Facebook, Instagram, LinkedIn, TikTok, X, Google Business Profile), token cifrado
+- ✅ Calendario editorial mensual y vista de lista, filtrable por canal y estado
+- ✅ Duplicar por canal, aprobar, cancelar, reintentar, marcar como publicada manualmente, descargar imagen, exportar CSV
+- ✅ Publicación automática real hacia Facebook (Graph API de Meta) + comando programado por cron para publicaciones vencidas
+- ⚠️ Instagram/LinkedIn/TikTok/X/Google Business todavía no tienen conector automático — se preparan, programan y descargan para publicación manual
 
-**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
+**71 pruebas automatizadas (PHPUnit)** en total.
+
+**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
 
 ## Tecnología
 

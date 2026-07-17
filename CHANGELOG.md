@@ -1,5 +1,26 @@
 # Changelog — NODO Catalog Manager
 
+## [1.3.0-fase4] — 2026-07-17
+
+Cuarta entrega funcional: redes sociales (Fase 4 de la hoja de ruta).
+
+### Agregado
+
+- Gestión de cuentas conectadas por canal (Facebook, Instagram, LinkedIn, TikTok, X, Google Business Profile), con token de acceso cifrado.
+- Publicaciones con producto relacionado, contenido, hashtags, enlace, imagen, fecha/hora y zona horaria de programación.
+- Calendario editorial mensual (con navegación entre meses) y vista de lista completa, filtrable por canal y por estado.
+- Estados claramente diferenciados: borrador, programada, enviando, enviada, pendiente de autorización, con error, publicada manualmente, cancelada — nunca se muestra "enviada" si no se confirmó con la plataforma.
+- Duplicar una publicación para otro canal con un clic, para adaptar el texto por red.
+- Aprobar, cancelar, reintentar, publicar ahora, marcar como publicada manualmente, descargar la imagen y exportar el calendario editorial en CSV.
+- **Publicación automática real** hacia Facebook mediante la Graph API de Meta (`/{page-id}/feed`), incluyendo manejo explícito de token inválido/expirado y errores de la plataforma.
+- Comando `social:publish-due`, programado cada minuto vía el scheduler de Laravel, que envía automáticamente las publicaciones programadas cuya fecha ya llegó (requiere el cron de `schedule:run`, ver `INSTALL-HOSTINGER.md`).
+- Permisos granulares nuevos: `ver redes`, `crear redes`, `editar redes`, `eliminar redes`, `aprobar redes`, `publicar redes`, `conectar cuentas redes`.
+- 11 pruebas automatizadas adicionales (71 en total) con HTTP simulado para el envío real a Facebook y para cada estado posible.
+
+### Nota importante
+
+Instagram, LinkedIn, TikTok, X y Google Business Profile no tienen conector de publicación automática todavía — el sistema lo indica con claridad y permite programar el contenido, descargar la imagen y marcarlo como "publicado manualmente" en vez de simular un envío que no ocurrió.
+
 ## [1.2.0-fase3] — 2026-07-17
 
 Tercera entrega funcional: generador de imágenes comerciales (Fase 3 de la hoja de ruta).
@@ -76,7 +97,7 @@ Cada fase se entregará completa y funcional de extremo a extremo, sin simulacio
 
 - ~~**Fase 2 — Inteligencia artificial (texto)**~~ ✅ Entregada — ver arriba.
 - ~~**Fase 3 — Generador de imágenes**~~ ✅ Entregada — ver arriba.
-- **Fase 4 — Redes sociales**: calendario editorial, preparación y programación de publicaciones, estados de publicación, integración con Meta cuando existan credenciales.
+- ~~**Fase 4 — Redes sociales**~~ ✅ Entregada — ver arriba.
 - **Fase 5 — Email marketing**: contactos, listas, segmentos, constructor visual de correos, campañas, automatizaciones, integración SMTP/Brevo/Mailgun/SES/SendGrid.
 - **Fase 6 — Landing pages**: generador de páginas por producto, SEO, Open Graph, analítica, captura de prospectos.
 - **Fase 7 — CRM**: pipeline Kanban, prospectos, actividades, conversión desde formularios y landing pages.

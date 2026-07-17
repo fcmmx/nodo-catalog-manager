@@ -23,6 +23,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'informacion sensible' => ['acceder'],
         'ia' => ['usar', 'ver historial', 'configurar'],
         'imagenes' => ['ver', 'crear', 'editar', 'eliminar'],
+        'redes' => ['ver', 'crear', 'editar', 'eliminar', 'aprobar', 'publicar', 'conectar cuentas'],
     ];
 
     public function run(): void
@@ -45,10 +46,12 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver productos', 'crear productos', 'editar productos', 'publicar productos', 'exportar productos',
                 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'usar ia', 'ver historial ia',
                 'ver imagenes', 'crear imagenes', 'editar imagenes',
+                'ver redes', 'crear redes', 'editar redes', 'aprobar redes', 'publicar redes', 'conectar cuentas redes',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes', 'editar imagenes', 'eliminar imagenes',
+                'ver redes', 'crear redes', 'editar redes',
             ],
             'Ventas' => [
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
@@ -56,9 +59,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'Editor' => [
                 'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes',
+                'ver redes', 'crear redes', 'editar redes',
             ],
             'Analista' => [
-                'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia',
+                'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia', 'ver redes',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',

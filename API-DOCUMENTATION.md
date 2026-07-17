@@ -94,6 +94,25 @@ Todas las rutas listadas abajo:
 | POST | `/imagenes/generaciones/{id}/usar-principal` | `editar imagenes` |
 | POST | `/imagenes/generaciones/{id}/galeria` | `editar imagenes` |
 
+## Redes sociales (Fase 4)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET/POST | `/redes/cuentas` | `ver redes` / `conectar cuentas redes` |
+| GET/PUT/DELETE | `/redes/cuentas/{id}` | `conectar cuentas redes` |
+| GET | `/redes/publicaciones` | `ver redes` (calendario editorial) |
+| GET/POST | `/redes/publicaciones/create` | `crear redes` |
+| GET/PUT/DELETE | `/redes/publicaciones/{id}` | `editar redes` / `eliminar redes` |
+| POST | `/redes/publicaciones/{id}/duplicar` | `crear redes` |
+| POST | `/redes/publicaciones/{id}/aprobar` | `aprobar redes` |
+| POST | `/redes/publicaciones/{id}/cancelar` | `editar redes` |
+| POST | `/redes/publicaciones/{id}/publicar` | `publicar redes` (envío real a Facebook) |
+| POST | `/redes/publicaciones/{id}/publicar-manual` | `publicar redes` |
+| GET | `/redes/publicaciones/{id}/descargar` | `ver redes` |
+| GET | `/redes/calendario/exportar` | `ver redes` (CSV) |
+
+Comando de consola: `php artisan social:publish-due` (programado cada minuto vía el scheduler, ver `INSTALL-HOSTINGER.md`).
+
 ## Instalador
 
 | Método | Ruta | Notas |

@@ -57,16 +57,23 @@ Qué SÍ está implementado y probado:
 
 Qué falta (depende de NODO 360): la clave de API real. Mientras no se configure, el botón "Generar con IA" permanece deshabilitado en toda la interfaz — no se simula ninguna respuesta.
 
-## Meta (Facebook/Instagram/WhatsApp) — ⏳ Pendiente (fase futura)
+## Meta — Facebook (redes sociales) — ✅ Listo para conectar (Fase 4)
 
-**No implementado en esta fase.** El módulo de feed de Meta Commerce, publicación en redes sociales y el Agente IA para WhatsApp mediante la API oficial de Meta se construirán en una fase posterior, e incluirán:
+La publicación automática hacia el **feed de una página de Facebook** ya está implementada usando la Graph API real de Meta (`POST /{page-id}/feed`), en `Redes Sociales → Cuentas conectadas`.
 
-- Formulario de configuración de credenciales (App ID, App Secret, tokens de página, número de WhatsApp Business) almacenadas cifradas en la tabla `settings` (mecanismo ya implementado y reutilizable: ver `App\Models\Setting::set()` con el parámetro `encrypted: true`).
-- Servicio adaptador desacoplado para las llamadas a la Graph API.
-- Manejo de errores explícito para: credenciales ausentes, cuenta no autorizada, token expirado, permisos insuficientes.
-- Documentación de cada permiso de Meta requerido.
+Para activarla necesitas, de tu cuenta de Meta for Developers:
 
-**No se ha usado ningún token de prueba ni credencial simulada.**
+1. Una app de Meta con el producto "Facebook Login for Business" o acceso a la Graph API.
+2. Un **token de acceso de página** (Page Access Token) con el permiso `pages_manage_posts` — de preferencia de larga duración.
+3. El **ID de la página** de Facebook que quieres administrar.
+
+Con esos tres datos, agrega la cuenta en el sistema (el token se guarda cifrado). El sistema distingue con claridad: sin credenciales, token expirado/revocado (error 401/190 de la Graph API), y errores devueltos por la plataforma — nunca se muestra "publicado" si la API no lo confirmó.
+
+**No se ha usado ningún token de prueba ni credencial simulada** — las pruebas automatizadas usan HTTP simulado (`Http::fake()`), no una cuenta real.
+
+## Meta — Instagram, WhatsApp Business, Meta Commerce — ⏳ Pendiente (fases futuras)
+
+**No implementado todavía.** Instagram (requiere creación de contenedor de medios antes de publicar, distinto al feed de Facebook), el Agente IA para WhatsApp vía API oficial, y el feed de Meta Commerce se construirán en fases posteriores. Mientras tanto, las publicaciones para Instagram se pueden preparar, programar y descargar desde Redes Sociales, marcándolas como "publicada manualmente" tras publicarlas tú mismo.
 
 ## Google (Ads, Analytics, Tag Manager) — ⏳ Pendiente (fase futura)
 
@@ -94,7 +101,9 @@ El envío transaccional básico (recuperación de contraseña) ya funciona vía 
 | SMTP / correo | ✅ Listo para configurar | Sí (proveedor a elegir) |
 | Almacenamiento local | ✅ Listo | No |
 | IA generativa — texto | ✅ Listo para configurar (Fase 2) | Sí, clave de API de OpenAI o Google |
-| Meta (Facebook/Instagram/WhatsApp) | ⏳ Fase futura | Sí, cuando se construya |
+| Meta — Facebook (publicación automática) | ✅ Listo para conectar (Fase 4) | Sí, token de página de Meta |
+| Meta — Instagram/WhatsApp/Commerce | ⏳ Fase futura | Sí, cuando se construya |
+| LinkedIn / TikTok / X / Google Business (publicación automática) | ⏳ Fase futura | Sí, cuando se construya |
 | Google (Ads/Analytics/GTM) | ⏳ Fase futura | Sí, cuando se construya |
 | Generador de imágenes (composición) | ✅ Listo (Fase 3) | No |
 | IA generativa — fondo de imagen (opcional) | ✅ Listo para configurar (Fase 3) | Sí, misma clave de OpenAI |

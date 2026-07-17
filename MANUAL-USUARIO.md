@@ -120,14 +120,24 @@ Menú lateral → **Imágenes → Generador de imágenes** (requiere permiso "ve
 5. **Imágenes → Plantillas** te permite crear tus propias plantillas (colores, formato, posición del título, si muestra precio/QR) además de las 6 incluidas. La plantilla maestra no se puede eliminar.
 6. **Imágenes → Historial de imágenes** muestra todas las imágenes generadas, filtrables por producto.
 
-## 12. Mi perfil
+## 12. Redes sociales
+
+Menú lateral → **Redes Sociales → Calendario editorial** (requiere permiso "ver redes").
+
+1. En **Redes Sociales → Cuentas conectadas** puedes conectar tus cuentas (Facebook, Instagram, LinkedIn, TikTok, X, Google Business Profile). Guarda el nombre de la cuenta, el ID de página/cuenta y el token de acceso — se guarda cifrado. Sin una cuenta conectada y autorizada, igual puedes preparar y programar contenido; solo no se podrá enviar automáticamente.
+2. **+ Nueva publicación**: elige canal, cuenta (opcional), producto relacionado (opcional), contenido, hashtags, enlace, imagen y, si quieres programarla, fecha y hora. Si no defines fecha, queda como borrador.
+3. El **calendario editorial** agrupa las publicaciones por día dentro del mes, con filtros por canal y estado, y navegación entre meses. También puedes ver todas en una lista y exportar el calendario a CSV.
+4. Acciones disponibles según tus permisos: **duplicar** para otro canal (ajusta el texto después), **aprobar**, **cancelar**, **publicar ahora** (Facebook) o **reintentar** si falló, **marcar como publicada manualmente** (para las redes sin conector automático todavía), y **descargar la imagen**.
+5. Las publicaciones programadas para **Facebook** con una cuenta autorizada se envían automáticamente cuando llega su fecha (vía el cron del servidor, cada minuto). Para las demás redes, descarga el contenido y publícalo tú mismo, luego márcalo como "publicada manualmente" para llevar el registro.
+
+## 13. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 13. Modo claro/oscuro
+## 14. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 14. Módulos en fases siguientes
+## 15. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: redes sociales, email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10) y el **generador de imágenes** (sección 11) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11) y **redes sociales** (sección 12) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

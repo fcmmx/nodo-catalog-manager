@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 + Fase 2 + Fase 3)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 4)
 
 ## Diagrama entidad-relación
 
@@ -8,9 +8,12 @@ erDiagram
     USERS ||--o{ IMPORT_BATCHES : "sube"
     USERS ||--o{ AI_GENERATIONS : "solicita"
     USERS ||--o{ IMAGE_GENERATIONS : "genera"
+    USERS ||--o{ SOCIAL_POSTS : "crea"
     PRODUCTS ||--o{ AI_GENERATIONS : "referencia"
     PRODUCTS ||--o{ IMAGE_GENERATIONS : "referencia"
+    PRODUCTS ||--o{ SOCIAL_POSTS : "referencia"
     IMAGE_TEMPLATES ||--o{ IMAGE_GENERATIONS : "usa"
+    SOCIAL_ACCOUNTS ||--o{ SOCIAL_POSTS : "publica"
     COLLECTIONS ||--o{ CATEGORIES : "agrupa"
     COLLECTIONS ||--o{ PRODUCTS : "clasifica"
     CATEGORIES ||--o{ PRODUCTS : "clasifica"
@@ -160,6 +163,34 @@ erDiagram
         string status
     }
 
+    SOCIAL_ACCOUNTS {
+        bigint id PK
+        string channel
+        string label
+        string external_account_id
+        text access_token
+        timestamp token_expires_at
+        boolean is_active
+    }
+
+    SOCIAL_POSTS {
+        bigint id PK
+        bigint user_id FK
+        bigint product_id FK
+        bigint social_account_id FK
+        string channel
+        text content
+        string image_path
+        string hashtags
+        string link
+        timestamp scheduled_at
+        string timezone
+        string status
+        string external_post_id
+        text error_message
+        bigint duplicated_from FK
+    }
+
     ROLES {
         bigint id PK
         string name UK
@@ -200,6 +231,8 @@ erDiagram
 | `ai_generations` | Registro de cada solicitud de generación de contenido con IA: usuario, producto (opcional), tarea, proveedor, modelo, prompt, respuesta, tokens, costo aproximado y estado (completado/aprobado/rechazado/error). |
 | `image_templates` | Plantillas de imagen reutilizables: formato, colores, posición del título, si muestra precio/QR, pie de marca. Incluye la plantilla maestra de NODO 360. |
 | `image_generations` | Cada imagen compuesta: plantilla usada, producto (opcional), textos, origen del fondo, ruta del archivo generado y estado. |
+| `social_accounts` | Cuentas conectadas de redes sociales por canal, con token de acceso cifrado y su vigencia. |
+| `social_posts` | Publicaciones de redes sociales: canal, cuenta, producto (opcional), contenido, imagen, programación y estado (borrador/programada/enviada/pendiente de autorización/error/publicada manual/cancelada). |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave
