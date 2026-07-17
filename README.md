@@ -4,7 +4,7 @@
 
 Sistema web para administrar el catálogo de productos y servicios de **NODO 360 MARKETING TECHNOLOGY**, desarrollado en Laravel 12 / PHP 8.2+ / MySQL, pensado para desplegarse en hosting compartido (Hostinger) sin depender de un servidor Node.js en producción.
 
-## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4
+## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4 + Fase 5
 
 Este repositorio se desarrolla por fases, acordado con el propietario del sistema. Todo lo incluido está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
 
@@ -40,9 +40,17 @@ Este repositorio se desarrolla por fases, acordado con el propietario del sistem
 - ✅ Publicación automática real hacia Facebook (Graph API de Meta) + comando programado por cron para publicaciones vencidas
 - ⚠️ Instagram/LinkedIn/TikTok/X/Google Business todavía no tienen conector automático — se preparan, programan y descargan para publicación manual
 
-**71 pruebas automatizadas (PHPUnit)** en total.
+**Fase 5 — Email marketing**
+- ✅ Contactos con consentimiento, suscripción, listas, importación masiva (CSV/XLSX/XLS) y exportación CSV
+- ✅ Constructor visual de campañas por bloques (encabezado, texto, imagen, botón, productos, separador, redes, pie legal), 10 tipos de campaña del brief
+- ✅ Envío de prueba, programación y envío inmediato, en cola respetuosa del proveedor SMTP vía cron (`email:send-due-campaigns`)
+- ✅ SMTP de campañas independiente del transaccional (SMTP propio, Brevo, Mailgun, SendGrid, Amazon SES), con contraseña cifrada y prueba de conexión real
+- ✅ Seguimiento real de aperturas (píxel) y clics (enlaces rastreados), reporte por campaña, baja con página pública de confirmación
+- ⚠️ Requiere que NODO 360 proporcione credenciales SMTP reales — mientras tanto, "Enviar prueba" y el envío programado muestran con claridad que falta configurar el proveedor
 
-**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
+**89 pruebas automatizadas (PHPUnit)** en total.
+
+**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
 
 ## Tecnología
 
@@ -70,7 +78,7 @@ resources/views/            Vistas Blade (layouts, catálogo, admin, instalador)
 resources/css/app.css       Fuente de Tailwind (compilar con bin/tailwindcss.exe)
 public/build/app.css        CSS ya compilado y listo para producción
 public/vendor/alpine/       Alpine.js servido localmente
-tests/                      42 pruebas automatizadas
+tests/                      89 pruebas automatizadas
 ```
 
 ## Instalación rápida (desarrollo local)

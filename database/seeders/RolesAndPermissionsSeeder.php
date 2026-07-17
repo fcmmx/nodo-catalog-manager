@@ -24,6 +24,8 @@ class RolesAndPermissionsSeeder extends Seeder
         'ia' => ['usar', 'ver historial', 'configurar'],
         'imagenes' => ['ver', 'crear', 'editar', 'eliminar'],
         'redes' => ['ver', 'crear', 'editar', 'eliminar', 'aprobar', 'publicar', 'conectar cuentas'],
+        'contactos' => ['ver', 'crear', 'editar', 'eliminar', 'importar', 'exportar'],
+        'campanas' => ['ver', 'crear', 'editar', 'eliminar', 'enviar', 'configurar'],
     ];
 
     public function run(): void
@@ -47,28 +49,35 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'usar ia', 'ver historial ia',
                 'ver imagenes', 'crear imagenes', 'editar imagenes',
                 'ver redes', 'crear redes', 'editar redes', 'aprobar redes', 'publicar redes', 'conectar cuentas redes',
+                'ver contactos', 'crear contactos', 'editar contactos', 'importar contactos', 'exportar contactos',
+                'ver campanas', 'crear campanas', 'editar campanas', 'enviar campanas', 'configurar campanas',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes', 'editar imagenes', 'eliminar imagenes',
                 'ver redes', 'crear redes', 'editar redes',
+                'ver campanas', 'crear campanas', 'editar campanas',
             ],
             'Ventas' => [
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
+                'ver contactos', 'crear contactos', 'editar contactos',
             ],
             'Editor' => [
                 'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes',
                 'ver redes', 'crear redes', 'editar redes',
+                'ver campanas', 'crear campanas', 'editar campanas',
             ],
             'Analista' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia', 'ver redes',
+                'ver contactos', 'ver campanas',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',
             ],
             'Solo lectura' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes', 'ver historial ia',
+                'ver contactos', 'ver campanas',
             ],
         ];
 

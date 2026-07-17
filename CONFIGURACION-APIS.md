@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 + Fase 2). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 5). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -89,9 +89,32 @@ La **única parte opcional** que requiere una API externa es generar el **fondo*
 - Solo funciona con el proveedor **OpenAI** (endpoint de generación de imágenes DALL·E). Si el proveedor configurado es Google, la interfaz lo indica claramente y sugiere subir una imagen manualmente en su lugar — no se simula ninguna imagen.
 - Si no hay ninguna clave configurada, la opción "Generar con IA" muestra una advertencia explicando cómo activarla, sin bloquear las demás opciones de fondo (degradado, subir imagen, imagen del producto), que funcionan siempre.
 
-## Proveedores de email marketing (Brevo, Mailgun, SendGrid, Amazon SES) — ⏳ Pendiente (fase futura)
+## Proveedores de email marketing (Brevo, Mailgun, SendGrid, Amazon SES) — ✅ Listo para configurar (Fase 5)
 
-El envío transaccional básico (recuperación de contraseña) ya funciona vía SMTP estándar (ver arriba). El módulo completo de campañas masivas, plantillas visuales, listas y segmentos se construirá en una fase posterior, con cola de envío, control de límites y reintentos para evitar el uso directo de `mail()` de PHP.
+El módulo completo de campañas masivas (`Email Marketing → Configuración de email`) ya está construido y probado: contactos con consentimiento, listas, constructor visual de bloques, envío en cola con control de límites por lote, y seguimiento de aperturas/clics/bajas. Es **independiente** del SMTP transaccional de `.env` (recuperación de contraseña) — usa un mailer dedicado (`campaign_smtp`) configurado en tiempo de ejecución desde la base de datos, para no interferir con el correo del sistema.
+
+Proveedores soportados (todos vía su interfaz SMTP estándar, sin dependencias extra por proveedor):
+
+- **SMTP propio** de NODO 360 o del hosting.
+- **Brevo (Sendinblue)**, **Mailgun**, **SendGrid**, **Amazon SES** — cualquiera que exponga host/puerto/usuario/contraseña SMTP.
+
+```
+# Configúralo desde el panel: Email Marketing → Configuración de email. No se
+# hace por .env porque la contraseña se guarda cifrada en la base de datos
+# (tabla settings, columna is_encrypted), nunca en texto plano.
+```
+
+Qué SÍ está implementado y probado:
+
+- Configuración de proveedor, host, puerto, usuario, cifrado (TLS/SSL) y remitente desde el panel.
+- Contraseña/clave de API cifrada, nunca mostrada completa.
+- Botón "Enviar prueba" que envía un correo real de verificación a una dirección que tú indiques.
+- Envío de campañas en lotes controlados (`batch_limit`, configurable por campaña) vía el comando `email:send-due-campaigns`, programado cada minuto por el cron del servidor — nunca se satura al proveedor SMTP con miles de envíos simultáneos.
+- Envío únicamente a contactos con **consentimiento vigente** y **estado suscrito** — se excluyen automáticamente los dados de baja.
+- Seguimiento real de aperturas (píxel) y clics (enlaces rastreados), con reporte por campaña.
+- Enlace de baja obligatorio en cada correo, con página pública de confirmación.
+
+Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor elegido. Mientras no se configuren, "Enviar prueba" y el envío programado muestran con claridad el motivo — no se simula ningún envío.
 
 ## Resumen
 
@@ -107,4 +130,4 @@ El envío transaccional básico (recuperación de contraseña) ya funciona vía 
 | Google (Ads/Analytics/GTM) | ⏳ Fase futura | Sí, cuando se construya |
 | Generador de imágenes (composición) | ✅ Listo (Fase 3) | No |
 | IA generativa — fondo de imagen (opcional) | ✅ Listo para configurar (Fase 3) | Sí, misma clave de OpenAI |
-| Email marketing (Brevo/Mailgun/SES/SendGrid) | ⏳ Fase futura | Sí, cuando se construya |
+| Email marketing (SMTP/Brevo/Mailgun/SES/SendGrid) | ✅ Listo para configurar (Fase 5) | Sí, credenciales SMTP del proveedor elegido |

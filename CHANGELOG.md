@@ -1,5 +1,34 @@
 # Changelog — NODO Catalog Manager
 
+## [1.4.0-fase5] — 2026-07-17
+
+Quinta entrega funcional: email marketing (Fase 5 de la hoja de ruta).
+
+### Agregado
+
+- Gestión de contactos: nombre, empresa, teléfono, WhatsApp, correo (único), origen, notas, consentimiento (con fecha) y estado de suscripción — con papelera (borrado suave).
+- Listas de contactos para segmentar campañas, con conteo de contactos y filtro directo desde el listado de contactos.
+- Importación masiva de contactos desde CSV/XLSX/XLS (reutiliza el lector de hojas de cálculo de la Fase 1), detectando columnas `email`/`name`/`nombre`/`phone`/`telefono` por encabezado, omitiendo filas sin correo válido y registrando el consentimiento de la importación.
+- Exportación de contactos a CSV.
+- 10 tipos de campaña del brief: newsletter, lanzamiento, promoción, seguimiento, bienvenida, recuperación de prospectos, reactivación, recordatorio, cotización y confirmación.
+- Constructor visual de campañas por bloques (encabezado, texto, imagen, botón, productos del catálogo, separador, redes sociales, pie legal), con reordenar/agregar/quitar bloques y persistencia como JSON.
+- Envío de prueba a una dirección propia antes de programar el envío masivo.
+- Envío en cola respetuoso del proveedor SMTP: comando `email:send-due-campaigns` programado cada minuto vía el scheduler de Laravel, que arma la cola de envíos (solo contactos suscritos y con consentimiento vigente) y despacha lotes configurables (`batch_limit`, 50 por defecto) a través de `SendCampaignEmailJob`.
+- SMTP de campañas independiente del correo transaccional del sistema (Configuración → Email Marketing), compatible con SMTP propio, Brevo, Mailgun, SendGrid o Amazon SES, con contraseña cifrada y prueba de conexión real.
+- Seguimiento real de aperturas (píxel de 1×1) y clics (enlaces reescritos con redirección), con reporte por campaña: enviados, aperturas, clics, rebotes y bajas.
+- Enlace de baja obligatorio en cada correo, con página pública de confirmación (sin necesidad de iniciar sesión) que marca al contacto como no suscrito y actualiza el contador de bajas de la campaña.
+- Permisos granulares nuevos: `ver contactos`, `crear contactos`, `editar contactos`, `eliminar contactos`, `importar contactos`, `exportar contactos`, `ver campanas`, `crear campanas`, `editar campanas`, `eliminar campanas`, `enviar campanas`, `configurar campanas`.
+- 18 pruebas automatizadas adicionales (89 en total), incluyendo el flujo completo de baja, el píxel de apertura, el clic rastreado, el filtrado por consentimiento/suscripción del comando de envío y el fallo explícito al enviar sin proveedor configurado.
+
+### Corregido
+
+- `CampaignController::sendTest()` y `EmailSettingsController::test()` pasaban un objeto `Stringable` (de `$request->string(...)`) como dirección de correo, lo que rompía la construcción del mensaje en el motor de correo de Laravel; ahora usan `$request->input(...)`.
+- El comando `email:send-due-campaigns` solo marcaba una campaña como "enviada" cuando el lote recién despachado ya venía vacío, retrasando innecesariamente la detección de finalización; ahora revisa directamente si quedan envíos pendientes tras despachar el lote.
+
+### Nota importante
+
+El envío de campañas requiere credenciales SMTP reales (propias o de un proveedor como Brevo, Mailgun, SendGrid o Amazon SES) configuradas en Configuración → Email Marketing. Sin ellas, "Enviar prueba" y el envío programado muestran con claridad que falta configurar el proveedor, en vez de simular un envío que no ocurrió.
+
 ## [1.3.0-fase4] — 2026-07-17
 
 Cuarta entrega funcional: redes sociales (Fase 4 de la hoja de ruta).

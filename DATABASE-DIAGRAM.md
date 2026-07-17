@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 4)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 5)
 
 ## Diagrama entidad-relación
 
@@ -21,6 +21,11 @@ erDiagram
     USERS }o--o{ ROLES : "model_has_roles"
     ROLES }o--o{ PERMISSIONS : "role_has_permissions"
     USERS }o--o{ PERMISSIONS : "model_has_permissions"
+    CONTACTS }o--o{ CONTACT_LISTS : "contact_list_contact"
+    CONTACT_LISTS ||--o{ EMAIL_CAMPAIGNS : "destinataria de"
+    USERS ||--o{ EMAIL_CAMPAIGNS : "crea"
+    EMAIL_CAMPAIGNS ||--o{ EMAIL_CAMPAIGN_SENDS : "genera"
+    CONTACTS ||--o{ EMAIL_CAMPAIGN_SENDS : "recibe"
 
     USERS {
         bigint id PK
@@ -213,6 +218,64 @@ erDiagram
         bigint causer_id
         json properties
     }
+
+    CONTACTS {
+        bigint id PK
+        string name
+        string company
+        string phone
+        string whatsapp
+        string email UK
+        string source
+        json tags
+        boolean consent
+        timestamp consent_at
+        boolean subscribed
+        timestamp unsubscribed_at
+        text notes
+        timestamp deleted_at
+    }
+
+    CONTACT_LISTS {
+        bigint id PK
+        string name
+        string slug UK
+        string description
+    }
+
+    EMAIL_CAMPAIGNS {
+        bigint id PK
+        string name
+        string type
+        string subject
+        string from_name
+        string from_email
+        bigint contact_list_id FK
+        json blocks
+        string status
+        timestamp scheduled_at
+        timestamp sent_at
+        int sent_count
+        int open_count
+        int click_count
+        int bounce_count
+        int unsubscribe_count
+        int batch_limit
+        bigint created_by FK
+        timestamp deleted_at
+    }
+
+    EMAIL_CAMPAIGN_SENDS {
+        bigint id PK
+        bigint email_campaign_id FK
+        bigint contact_id FK
+        string token UK
+        string status
+        timestamp sent_at
+        timestamp opened_at
+        timestamp clicked_at
+        text error_message
+    }
 ```
 
 ## Descripción de tablas
@@ -233,6 +296,11 @@ erDiagram
 | `image_generations` | Cada imagen compuesta: plantilla usada, producto (opcional), textos, origen del fondo, ruta del archivo generado y estado. |
 | `social_accounts` | Cuentas conectadas de redes sociales por canal, con token de acceso cifrado y su vigencia. |
 | `social_posts` | Publicaciones de redes sociales: canal, cuenta, producto (opcional), contenido, imagen, programación y estado (borrador/programada/enviada/pendiente de autorización/error/publicada manual/cancelada). |
+| `contacts` | Contactos de email marketing: datos, origen, etiquetas, consentimiento (con fecha) y estado de suscripción, con eliminación lógica. |
+| `contact_lists` | Listas para segmentar contactos al enviar campañas. |
+| `contact_list_contact` | Tabla pivote entre `contacts` y `contact_lists` (relación muchos a muchos). |
+| `email_campaigns` | Campañas de email marketing: tipo, asunto, remitente, lista destinataria, contenido por bloques (JSON), estado, programación, límite de lote y métricas acumuladas (enviados/aperturas/clics/rebotes/bajas). |
+| `email_campaign_sends` | Un registro por cada envío individual de una campaña a un contacto: token único (usado en el seguimiento y la baja), estado, marcas de tiempo de envío/apertura/clic y mensaje de error. |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave
@@ -243,6 +311,8 @@ erDiagram
 - Un **producto** registra qué **usuario** lo creó y quién lo editó por última vez.
 - Un **lote de importación** pertenece al **usuario** que lo subió.
 - Un **usuario** puede tener uno o varios **roles**, y cada **rol** agrupa uno o varios **permisos**.
+- Un **contacto** puede pertenecer a varias **listas**, y una **lista** puede tener varios **contactos** (muchos a muchos).
+- Una **campaña de email** pertenece opcionalmente a una **lista de contactos** (su destinataria) y genera muchos **envíos**, uno por cada **contacto** elegible (suscrito y con consentimiento) de la lista.
 
 ## Generar el diagrama visual
 

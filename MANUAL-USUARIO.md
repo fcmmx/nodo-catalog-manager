@@ -130,14 +130,25 @@ Menú lateral → **Redes Sociales → Calendario editorial** (requiere permiso 
 4. Acciones disponibles según tus permisos: **duplicar** para otro canal (ajusta el texto después), **aprobar**, **cancelar**, **publicar ahora** (Facebook) o **reintentar** si falló, **marcar como publicada manualmente** (para las redes sin conector automático todavía), y **descargar la imagen**.
 5. Las publicaciones programadas para **Facebook** con una cuenta autorizada se envían automáticamente cuando llega su fecha (vía el cron del servidor, cada minuto). Para las demás redes, descarga el contenido y publícalo tú mismo, luego márcalo como "publicada manualmente" para llevar el registro.
 
-## 13. Mi perfil
+## 13. Email marketing
+
+Menú lateral → **Email Marketing → Campañas** (requiere permiso "ver campanas").
+
+1. Antes de enviar, un administrador debe configurar un proveedor SMTP en **Email Marketing → Configuración de email** (requiere permiso "configurar campanas"): SMTP propio o de un proveedor como Brevo, Mailgun, SendGrid o Amazon SES — host, puerto, usuario, contraseña (se guarda cifrada) y remitente. Usa **Enviar prueba** para confirmar que funciona. Sin esta configuración, "Enviar prueba" y el envío programado muestran con claridad el motivo — no se simula ningún envío.
+2. En **Email Marketing → Contactos**, agrega contactos manualmente o impórtalos desde CSV/XLSX/XLS (columna `email` obligatoria; `name`/`nombre` y `phone`/`telefono` opcionales). Cada contacto tiene consentimiento y estado de suscripción — solo se les envía si ambos están activos. También puedes exportarlos a CSV.
+3. En **Email Marketing → Listas**, agrupa contactos para segmentar tus envíos.
+4. **+ Nueva campaña**: elige tipo (10 disponibles: newsletter, lanzamiento, promoción, seguimiento, bienvenida, recuperación, reactivación, recordatorio, cotización, confirmación), asunto, remitente y lista de contactos. Arma el contenido con el **constructor de bloques**: encabezado, texto, imagen, botón, productos del catálogo, separador, redes sociales y pie legal — agrega, reordena y quita bloques libremente.
+5. Guarda la campaña y usa **Enviar prueba** (a tu propio correo) antes de programarla. Luego **Programar envío** (fecha y hora) o **Enviar ahora** — el envío real ocurre en lotes vía el cron del servidor (`email:send-due-campaigns`, cada minuto), respetando el tamaño de lote configurado para no saturar al proveedor SMTP. Puedes **pausar** una campaña en curso.
+6. El **reporte de campaña** muestra enviados, aperturas, clics, rebotes y bajas, con el detalle de cada envío. Cada correo incluye un enlace de baja obligatorio: al hacer clic, el destinatario ve una página de confirmación pública (sin iniciar sesión) y, al confirmar, queda excluido de futuros envíos.
+
+## 14. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 14. Modo claro/oscuro
+## 15. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 15. Módulos en fases siguientes
+## 16. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: email marketing, landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11) y **redes sociales** (sección 12) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12) y **email marketing** (sección 13) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

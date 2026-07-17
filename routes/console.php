@@ -12,3 +12,6 @@ Artisan::command('inspire', function () {
 // cuya fecha ya llegó. Requiere que el cron del servidor ejecute
 // `php artisan schedule:run` cada minuto (ver INSTALL-HOSTINGER.md).
 Schedule::command('social:publish-due')->everyMinute()->withoutOverlapping();
+
+// Encola en lotes el envío de campañas de email marketing programadas.
+Schedule::command('email:send-due-campaigns')->everyMinute()->withoutOverlapping();

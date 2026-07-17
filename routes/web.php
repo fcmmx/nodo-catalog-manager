@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AiSettingsController;
+use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Ai\ContentGeneratorController;
@@ -14,6 +15,10 @@ use App\Http\Controllers\Catalog\CollectionController;
 use App\Http\Controllers\Catalog\ImportExportController;
 use App\Http\Controllers\Catalog\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Email\CampaignController;
+use App\Http\Controllers\Email\ContactController;
+use App\Http\Controllers\Email\ContactListController;
+use App\Http\Controllers\Email\TrackingController;
 use App\Http\Controllers\Images\GeneratorController as ImageGeneratorController;
 use App\Http\Controllers\Images\TemplateController as ImageTemplateController;
 use App\Http\Controllers\Install\InstallController;
@@ -21,6 +26,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Social\SocialAccountController;
 use App\Http\Controllers\Social\SocialPostController;
 use Illuminate\Support\Facades\Route;
+
+// Seguimiento y baja de email marketing: enlaces públicos incluidos en los
+// correos, sin autenticación (usan un token propio o firma de Laravel).
+Route::get('/email/abrir/{token}', [TrackingController::class, 'pixel'])->name('email.track.open');
+Route::get('/email/clic/{token}', [TrackingController::class, 'click'])->name('email.track.click');
+Route::get('/email/baja/{token}', [TrackingController::class, 'unsubscribeForm'])->name('email.unsubscribe.form');
+Route::post('/email/baja/{token}', [TrackingController::class, 'unsubscribe'])->name('email.unsubscribe');
 
 Route::redirect('/', '/dashboard');
 
@@ -131,5 +143,27 @@ Route::middleware('auth')->group(function () {
             ->parameters(['publicaciones' => 'post'])
             ->except(['show'])
             ->names('posts');
+    });
+
+    Route::prefix('email')->name('email.')->middleware('permission:ver contactos')->group(function () {
+        Route::get('contactos/exportar', [ContactController::class, 'export'])->name('contacts.export')->middleware('permission:exportar contactos');
+        Route::get('contactos/importar', [ContactController::class, 'importForm'])->name('contacts.import.form')->middleware('permission:importar contactos');
+        Route::post('contactos/importar', [ContactController::class, 'import'])->name('contacts.import')->middleware('permission:importar contactos');
+        Route::resource('contactos', ContactController::class)->parameters(['contactos' => 'contact'])->except(['show'])->names('contacts');
+
+        Route::resource('listas', ContactListController::class)->parameters(['listas' => 'list'])->except(['show'])->names('lists');
+
+        Route::get('campanas/{campaign}/reporte', [CampaignController::class, 'report'])->name('campaigns.report')->middleware('permission:ver campanas');
+        Route::post('campanas/{campaign}/prueba', [CampaignController::class, 'sendTest'])->name('campaigns.send-test')->middleware('permission:enviar campanas');
+        Route::post('campanas/{campaign}/programar', [CampaignController::class, 'schedule'])->name('campaigns.schedule')->middleware('permission:enviar campanas');
+        Route::post('campanas/{campaign}/enviar-ahora', [CampaignController::class, 'sendNow'])->name('campaigns.send-now')->middleware('permission:enviar campanas');
+        Route::post('campanas/{campaign}/pausar', [CampaignController::class, 'pause'])->name('campaigns.pause')->middleware('permission:enviar campanas');
+        Route::resource('campanas', CampaignController::class)->parameters(['campanas' => 'campaign'])->except(['show'])->names('campaigns');
+    });
+
+    Route::prefix('admin/email')->name('admin.email.')->middleware('permission:configurar campanas')->group(function () {
+        Route::get('configuracion', [EmailSettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('configuracion', [EmailSettingsController::class, 'update'])->name('settings.update');
+        Route::post('configuracion/probar', [EmailSettingsController::class, 'test'])->name('settings.test');
     });
 });

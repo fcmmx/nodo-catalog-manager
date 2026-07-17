@@ -160,8 +160,8 @@ hPanel → Avanzado → Cron Jobs → agrega **dos** tareas:
 
 Ajusta la ruta `/home/u123456789/public_html/artisan` a la ruta real de tu proyecto (usa `pwd` dentro de la carpeta del proyecto por SSH para confirmarla).
 
-- La primera línea ejecuta el planificador de Laravel cada minuto (útil para tareas futuras programadas, como regenerar feeds).
-- La segunda **procesa la cola de importaciones** cada minuto durante hasta 50 segundos y luego se detiene (`--stop-when-empty`), evitando dejar un proceso permanente — Hostinger no permite workers de cola persistentes en hosting compartido, así que este patrón de cron + `--stop-when-empty` es la alternativa recomendada.
+- La primera línea ejecuta el planificador de Laravel cada minuto, que a su vez dispara `social:publish-due` (publicaciones de redes sociales vencidas) y `email:send-due-campaigns` (arma y encola las campañas de email programadas cuya fecha ya llegó).
+- La segunda **procesa la cola de trabajos en segundo plano** (importaciones masivas y envío de correos de campañas) cada minuto durante hasta 50 segundos y luego se detiene (`--stop-when-empty`), evitando dejar un proceso permanente — Hostinger no permite workers de cola persistentes en hosting compartido, así que este patrón de cron + `--stop-when-empty` es la alternativa recomendada.
 
 ### A.13 Activar SSL
 

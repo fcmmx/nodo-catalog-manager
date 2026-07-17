@@ -1,4 +1,4 @@
-# Documentación de Rutas — NODO Catalog Manager (Fase 1)
+# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 5)
 
 ## Alcance
 
@@ -112,6 +112,43 @@ Todas las rutas listadas abajo:
 | GET | `/redes/calendario/exportar` | `ver redes` (CSV) |
 
 Comando de consola: `php artisan social:publish-due` (programado cada minuto vía el scheduler, ver `INSTALL-HOSTINGER.md`).
+
+## Email marketing (Fase 5)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/admin/email/configuracion` | `configurar campanas` |
+| PUT | `/admin/email/configuracion` | `configurar campanas` |
+| POST | `/admin/email/configuracion/probar` | `configurar campanas` (envía un correo de prueba real con la configuración guardada) |
+| GET | `/email/contactos` | `ver contactos` |
+| GET/POST | `/email/contactos/create` | `crear contactos` |
+| GET/PUT/DELETE | `/email/contactos/{id}` | `editar contactos` / `eliminar contactos` |
+| GET | `/email/contactos/importar` | `importar contactos` |
+| POST | `/email/contactos/importar` | `importar contactos` (CSV/XLSX/XLS) |
+| GET | `/email/contactos/exportar` | `exportar contactos` (CSV) |
+| GET/POST | `/email/listas` | `ver contactos` / `crear contactos` |
+| GET/PUT/DELETE | `/email/listas/{id}` | `editar contactos` / `eliminar contactos` |
+| GET | `/email/campanas` | `ver campanas` |
+| GET/POST | `/email/campanas/create` | `crear campanas` |
+| GET/PUT/DELETE | `/email/campanas/{id}` | `editar campanas` / `eliminar campanas` |
+| POST | `/email/campanas/{id}/prueba` | `enviar campanas` (envío de prueba real, requiere `test_email`) |
+| POST | `/email/campanas/{id}/programar` | `enviar campanas` (requiere lista de contactos asignada) |
+| POST | `/email/campanas/{id}/enviar-ahora` | `enviar campanas` |
+| POST | `/email/campanas/{id}/pausar` | `enviar campanas` |
+| GET | `/email/campanas/{id}/reporte` | `ver campanas` |
+
+Comando de consola: `php artisan email:send-due-campaigns` (programado cada minuto vía el scheduler, ver `INSTALL-HOSTINGER.md`).
+
+### Enlaces públicos de email marketing (sin autenticación)
+
+Incluidos en el HTML de cada correo enviado; usan un token propio de alta entropía (48 caracteres) por envío, no la sesión del usuario.
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/email/abrir/{token}` | Píxel de seguimiento de apertura (1×1, transparente) |
+| GET | `/email/clic/{token}?url=...` | Redirección rastreada de clic (URL de destino codificada en base64) |
+| GET | `/email/baja/{token}` | Página pública de confirmación de baja |
+| POST | `/email/baja/{token}` | Confirma la baja: marca al contacto como no suscrito |
 
 ## Instalador
 

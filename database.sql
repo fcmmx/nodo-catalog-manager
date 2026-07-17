@@ -39,7 +39,7 @@ CREATE TABLE `activity_log` (
   KEY `subject` (`subject_type`,`subject_id`),
   KEY `causer` (`causer_type`,`causer_id`),
   KEY `activity_log_log_name_index` (`log_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,6 @@ CREATE TABLE `activity_log` (
 
 LOCK TABLES `activity_log` WRITE;
 /*!40000 ALTER TABLE `activity_log` DISABLE KEYS */;
-INSERT INTO `activity_log` VALUES (1,'default','created','App\\Models\\User','created',1,NULL,NULL,'{\"attributes\":{\"name\":\"Administrador NODO 360\",\"email\":\"admin@nodo360mkt.site\",\"is_active\":true}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(2,'default','created','App\\Models\\Product','created',1,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para WhatsApp\",\"sku\":\"IA-001\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(3,'default','created','App\\Models\\Product','created',2,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para Ventas\",\"sku\":\"IA-002\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(4,'default','created','App\\Models\\Product','created',3,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para Atenci\\u00f3n al Cliente\",\"sku\":\"IA-003\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(5,'default','created','App\\Models\\Product','created',4,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para Agendar Citas\",\"sku\":\"IA-004\",\"status\":\"borrador\",\"price\":\"3990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(6,'default','created','App\\Models\\Product','created',5,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para Cotizaciones\",\"sku\":\"IA-005\",\"status\":\"borrador\",\"price\":\"4490.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(7,'default','created','App\\Models\\Product','created',6,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA para Seguimiento de Prospectos\",\"sku\":\"IA-006\",\"status\":\"borrador\",\"price\":\"4490.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(8,'default','created','App\\Models\\Product','created',7,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n Empresarial\",\"sku\":\"AUT-001\",\"status\":\"borrador\",\"price\":\"6990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(9,'default','created','App\\Models\\Product','created',8,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Ventas\",\"sku\":\"AUT-002\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(10,'default','created','App\\Models\\Product','created',9,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Inventarios\",\"sku\":\"AUT-003\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(11,'default','created','App\\Models\\Product','created',10,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Reservas\",\"sku\":\"AUT-004\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(12,'default','created','App\\Models\\Product','created',11,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Cobranza\",\"sku\":\"AUT-005\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(13,'default','created','App\\Models\\Product','created',12,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Email Marketing\",\"sku\":\"AUT-006\",\"status\":\"borrador\",\"price\":\"3990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(14,'default','created','App\\Models\\Product','created',13,NULL,NULL,'{\"attributes\":{\"name\":\"Automatizaci\\u00f3n de Redes Sociales\",\"sku\":\"AUT-007\",\"status\":\"borrador\",\"price\":\"4490.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(15,'default','created','App\\Models\\Product','created',14,NULL,NULL,'{\"attributes\":{\"name\":\"CRM Inteligente\",\"sku\":\"SOF-001\",\"status\":\"borrador\",\"price\":\"7990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(16,'default','created','App\\Models\\Product','created',15,NULL,NULL,'{\"attributes\":{\"name\":\"Sistemas a la Medida\",\"sku\":\"SOF-002\",\"status\":\"borrador\",\"price\":\"25000.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(17,'default','created','App\\Models\\Product','created',16,NULL,NULL,'{\"attributes\":{\"name\":\"Sistema para Hoteles y Moteles\",\"sku\":\"SOF-003\",\"status\":\"borrador\",\"price\":\"9990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(18,'default','created','App\\Models\\Product','created',17,NULL,NULL,'{\"attributes\":{\"name\":\"Control de Inventarios\",\"sku\":\"SOF-004\",\"status\":\"borrador\",\"price\":\"6990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(19,'default','created','App\\Models\\Product','created',18,NULL,NULL,'{\"attributes\":{\"name\":\"ERP Empresarial\",\"sku\":\"SOF-005\",\"status\":\"borrador\",\"price\":\"14990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(20,'default','created','App\\Models\\Product','created',19,NULL,NULL,'{\"attributes\":{\"name\":\"Aplicaciones M\\u00f3viles\",\"sku\":\"SOF-006\",\"status\":\"borrador\",\"price\":\"25000.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(21,'default','created','App\\Models\\Product','created',20,NULL,NULL,'{\"attributes\":{\"name\":\"Integraci\\u00f3n de APIs\",\"sku\":\"SOF-007\",\"status\":\"borrador\",\"price\":\"12990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(22,'default','created','App\\Models\\Product','created',21,NULL,NULL,'{\"attributes\":{\"name\":\"Marketing Inteligente con IA\",\"sku\":\"GRW-001\",\"status\":\"borrador\",\"price\":\"8990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(23,'default','created','App\\Models\\Product','created',22,NULL,NULL,'{\"attributes\":{\"name\":\"Google Ads y Meta Ads\",\"sku\":\"GRW-002\",\"status\":\"borrador\",\"price\":\"6990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(24,'default','created','App\\Models\\Product','created',23,NULL,NULL,'{\"attributes\":{\"name\":\"Landing Pages de Alta Conversi\\u00f3n\",\"sku\":\"GRW-003\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(25,'default','created','App\\Models\\Product','created',24,NULL,NULL,'{\"attributes\":{\"name\":\"Optimizaci\\u00f3n para IA, AEO y GEO\",\"sku\":\"GRW-004\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(26,'default','created','App\\Models\\Product','created',25,NULL,NULL,'{\"attributes\":{\"name\":\"Email Marketing Inteligente\",\"sku\":\"GRW-005\",\"status\":\"borrador\",\"price\":\"3990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(27,'default','created','App\\Models\\Product','created',26,NULL,NULL,'{\"attributes\":{\"name\":\"Gesti\\u00f3n de Redes Sociales\",\"sku\":\"GRW-006\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(28,'default','created','App\\Models\\Product','created',27,NULL,NULL,'{\"attributes\":{\"name\":\"Generaci\\u00f3n de Contenido con IA\",\"sku\":\"GRW-007\",\"status\":\"borrador\",\"price\":\"4490.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(29,'default','created','App\\Models\\Product','created',28,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Hoteles y Moteles\",\"sku\":\"IND-001\",\"status\":\"borrador\",\"price\":\"6990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(30,'default','created','App\\Models\\Product','created',29,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Despachos Jur\\u00eddicos\",\"sku\":\"IND-002\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(31,'default','created','App\\Models\\Product','created',30,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Cl\\u00ednicas\",\"sku\":\"IND-003\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(32,'default','created','App\\Models\\Product','created',31,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Inmobiliarias\",\"sku\":\"IND-004\",\"status\":\"borrador\",\"price\":\"5990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(33,'default','created','App\\Models\\Product','created',32,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Restaurantes\",\"sku\":\"IND-005\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(34,'default','created','App\\Models\\Product','created',33,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Escuelas\",\"sku\":\"IND-006\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(35,'default','created','App\\Models\\Product','created',34,NULL,NULL,'{\"attributes\":{\"name\":\"IA para Mariachis y Eventos\",\"sku\":\"IND-007\",\"status\":\"borrador\",\"price\":\"3990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(36,'default','created','App\\Models\\Product','created',35,NULL,NULL,'{\"attributes\":{\"name\":\"Infraestructura Cloud\",\"sku\":\"TRA-001\",\"status\":\"borrador\",\"price\":\"9990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(37,'default','created','App\\Models\\Product','created',36,NULL,NULL,'{\"attributes\":{\"name\":\"Hosting y Dominios\",\"sku\":\"TRA-002\",\"status\":\"borrador\",\"price\":\"990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(38,'default','created','App\\Models\\Product','created',37,NULL,NULL,'{\"attributes\":{\"name\":\"Ciberseguridad\",\"sku\":\"TRA-003\",\"status\":\"borrador\",\"price\":\"7990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(39,'default','created','App\\Models\\Product','created',38,NULL,NULL,'{\"attributes\":{\"name\":\"Dashboards Ejecutivos\",\"sku\":\"TRA-004\",\"status\":\"borrador\",\"price\":\"6990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(40,'default','created','App\\Models\\Product','created',39,NULL,NULL,'{\"attributes\":{\"name\":\"Consultor\\u00eda en Transformaci\\u00f3n Digital\",\"sku\":\"TRA-005\",\"status\":\"borrador\",\"price\":\"8990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 12:48:53','2026-07-17 12:48:53'),(41,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:08:44','2026-07-17 13:08:44'),(42,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:09:47','2026-07-17 13:09:47'),(43,'catalogo','Exportó 39 producto(s) en formato csv',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:10:15','2026-07-17 13:10:15'),(44,'catalogo','Exportó 39 producto(s) en formato json',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:10:15','2026-07-17 13:10:15'),(45,'catalogo','Exportó 39 producto(s) en formato csv',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:10:16','2026-07-17 13:10:16'),(46,'default','created','App\\Models\\Product','created',40,NULL,NULL,'{\"attributes\":{\"name\":\"Agente IA de Ejemplo\",\"sku\":\"IA-100\",\"status\":\"borrador\",\"price\":\"4990.00\",\"availability\":\"disponible\"}}',NULL,'2026-07-17 13:14:50','2026-07-17 13:14:50'),(47,'configuracion','Actualizó la configuración del sistema',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 13:15:27','2026-07-17 13:15:27'),(48,'default','created','App\\Models\\User','created',2,'App\\Models\\User',1,'{\"attributes\":{\"name\":\"Usuario QA Test\",\"email\":\"qa.test@nodo360mkt.site\",\"is_active\":true}}',NULL,'2026-07-17 13:15:27','2026-07-17 13:15:27'),(49,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 10:24:55','2026-07-17 10:24:55'),(50,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 10:25:19','2026-07-17 10:25:19'),(51,'default','created','App\\Models\\User','created',3,'App\\Models\\User',1,'{\"attributes\":{\"name\":\"Fede\",\"email\":\"fede@nodo360mkt.site\",\"is_active\":true}}',NULL,'2026-07-17 10:35:20','2026-07-17 10:35:20'),(52,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',3,'[]',NULL,'2026-07-17 10:36:24','2026-07-17 10:36:24'),(53,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:16:29','2026-07-17 21:16:29'),(54,'imagenes','Generó una imagen con la plantilla Plantilla maestra NODO 360',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:17:03','2026-07-17 21:17:03'),(55,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:18:37','2026-07-17 21:18:37'),(56,'imagenes','Generó una imagen con la plantilla Plantilla maestra NODO 360',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:18:38','2026-07-17 21:18:38'),(57,'imagenes','Estableció una imagen generada como principal del producto Agente IA para WhatsApp',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:19:05','2026-07-17 21:19:05'),(58,'auth','Inicio de sesión',NULL,'login',NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:43:06','2026-07-17 21:43:06'),(59,'redes','Creó una publicación para facebook',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:43:07','2026-07-17 21:43:07'),(60,'redes','Marcó como publicada manualmente la publicación #1',NULL,NULL,NULL,'App\\Models\\User',1,'[]',NULL,'2026-07-17 21:43:53','2026-07-17 21:43:53');
 /*!40000 ALTER TABLE `activity_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,6 +210,186 @@ LOCK TABLES `collections` WRITE;
 /*!40000 ALTER TABLE `collections` DISABLE KEYS */;
 INSERT INTO `collections` VALUES (1,'Inteligencia Artificial','inteligencia-artificial','Agentes de inteligencia artificial que atienden, venden y dan seguimiento a tus clientes de forma automática.','cpu-chip',NULL,'#2563EB',0,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL),(2,'Automatización Empresarial','automatizacion-empresarial','Conectamos tus sistemas y procesos para eliminar tareas manuales repetitivas.','bolt',NULL,'#7C3AED',1,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL),(3,'Software Empresarial','software-empresarial','Sistemas y plataformas a la medida para operar y escalar tu negocio.','squares-2x2',NULL,'#0F172A',2,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL),(4,'Growth Marketing','growth-marketing','Estrategias de marketing digital orientadas a resultados medibles.','rocket-launch',NULL,'#DC2626',3,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL),(5,'Soluciones por Industria','soluciones-por-industria','Soluciones de inteligencia artificial adaptadas a los procesos específicos de cada industria.','building-storefront',NULL,'#0EA5E9',4,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL),(6,'Transformación Digital','transformacion-digital','Infraestructura, seguridad y consultoría para digitalizar tu operación.','globe-alt',NULL,'#1D4ED8',5,1,'2026-07-17 12:48:53','2026-07-17 12:48:53',NULL);
 /*!40000 ALTER TABLE `collections` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contact_list_contact`
+--
+
+DROP TABLE IF EXISTS `contact_list_contact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact_list_contact` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `contact_id` bigint(20) unsigned NOT NULL,
+  `contact_list_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `contact_list_contact_contact_id_contact_list_id_unique` (`contact_id`,`contact_list_id`),
+  KEY `contact_list_contact_contact_list_id_foreign` (`contact_list_id`),
+  CONSTRAINT `contact_list_contact_contact_id_foreign` FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `contact_list_contact_contact_list_id_foreign` FOREIGN KEY (`contact_list_id`) REFERENCES `contact_lists` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact_list_contact`
+--
+
+LOCK TABLES `contact_list_contact` WRITE;
+/*!40000 ALTER TABLE `contact_list_contact` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact_list_contact` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contact_lists`
+--
+
+DROP TABLE IF EXISTS `contact_lists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact_lists` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `contact_lists_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact_lists`
+--
+
+LOCK TABLES `contact_lists` WRITE;
+/*!40000 ALTER TABLE `contact_lists` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact_lists` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contacts` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `company` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `whatsapp` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  `tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`tags`)),
+  `consent` tinyint(1) NOT NULL DEFAULT 0,
+  `consent_at` timestamp NULL DEFAULT NULL,
+  `subscribed` tinyint(1) NOT NULL DEFAULT 1,
+  `unsubscribed_at` timestamp NULL DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `contacts_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacts`
+--
+
+LOCK TABLES `contacts` WRITE;
+/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `email_campaign_sends`
+--
+
+DROP TABLE IF EXISTS `email_campaign_sends`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `email_campaign_sends` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `email_campaign_id` bigint(20) unsigned NOT NULL,
+  `contact_id` bigint(20) unsigned NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'pendiente',
+  `sent_at` timestamp NULL DEFAULT NULL,
+  `opened_at` timestamp NULL DEFAULT NULL,
+  `clicked_at` timestamp NULL DEFAULT NULL,
+  `error_message` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_campaign_sends_email_campaign_id_contact_id_unique` (`email_campaign_id`,`contact_id`),
+  UNIQUE KEY `email_campaign_sends_token_unique` (`token`),
+  KEY `email_campaign_sends_contact_id_foreign` (`contact_id`),
+  CONSTRAINT `email_campaign_sends_contact_id_foreign` FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `email_campaign_sends_email_campaign_id_foreign` FOREIGN KEY (`email_campaign_id`) REFERENCES `email_campaigns` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `email_campaign_sends`
+--
+
+LOCK TABLES `email_campaign_sends` WRITE;
+/*!40000 ALTER TABLE `email_campaign_sends` DISABLE KEYS */;
+/*!40000 ALTER TABLE `email_campaign_sends` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `email_campaigns`
+--
+
+DROP TABLE IF EXISTS `email_campaigns`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `email_campaigns` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL DEFAULT 'newsletter',
+  `subject` varchar(255) NOT NULL,
+  `from_name` varchar(255) NOT NULL,
+  `from_email` varchar(255) NOT NULL,
+  `contact_list_id` bigint(20) unsigned DEFAULT NULL,
+  `blocks` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`blocks`)),
+  `status` varchar(255) NOT NULL DEFAULT 'borrador',
+  `scheduled_at` timestamp NULL DEFAULT NULL,
+  `sent_at` timestamp NULL DEFAULT NULL,
+  `sent_count` int(10) unsigned NOT NULL DEFAULT 0,
+  `open_count` int(10) unsigned NOT NULL DEFAULT 0,
+  `click_count` int(10) unsigned NOT NULL DEFAULT 0,
+  `bounce_count` int(10) unsigned NOT NULL DEFAULT 0,
+  `unsubscribe_count` int(10) unsigned NOT NULL DEFAULT 0,
+  `batch_limit` int(10) unsigned NOT NULL DEFAULT 50,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `email_campaigns_contact_list_id_foreign` (`contact_list_id`),
+  KEY `email_campaigns_created_by_foreign` (`created_by`),
+  CONSTRAINT `email_campaigns_contact_list_id_foreign` FOREIGN KEY (`contact_list_id`) REFERENCES `contact_lists` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `email_campaigns_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `email_campaigns`
+--
+
+LOCK TABLES `email_campaigns` WRITE;
+/*!40000 ALTER TABLE `email_campaigns` DISABLE KEYS */;
+/*!40000 ALTER TABLE `email_campaigns` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -443,7 +622,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -452,7 +631,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_07_17_063251_create_permission_tables',1),(5,'2026_07_17_063253_create_activity_log_table',1),(6,'2026_07_17_063254_add_event_column_to_activity_log_table',1),(7,'2026_07_17_063255_add_batch_uuid_column_to_activity_log_table',1),(8,'2026_07_17_063348_add_profile_fields_to_users_table',1),(9,'2026_07_17_063349_create_collections_table',2),(10,'2026_07_17_063350a_create_categories_table',2),(11,'2026_07_17_063351_create_products_table',2),(12,'2026_07_17_063352_create_product_images_table',2),(13,'2026_07_17_063353_create_settings_table',2),(14,'2026_07_17_063354_create_import_batches_table',2),(15,'2026_07_17_041626_create_ai_generations_table',3),(16,'2026_07_17_045903_create_image_templates_table',4),(17,'2026_07_17_045904_create_image_generations_table',4),(18,'2026_07_17_153343_create_social_accounts_table',5),(19,'2026_07_17_153343_create_social_posts_table',5);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_07_17_063251_create_permission_tables',1),(5,'2026_07_17_063253_create_activity_log_table',1),(6,'2026_07_17_063254_add_event_column_to_activity_log_table',1),(7,'2026_07_17_063255_add_batch_uuid_column_to_activity_log_table',1),(8,'2026_07_17_063348_add_profile_fields_to_users_table',1),(9,'2026_07_17_063349_create_collections_table',2),(10,'2026_07_17_063350a_create_categories_table',2),(11,'2026_07_17_063351_create_products_table',2),(12,'2026_07_17_063352_create_product_images_table',2),(13,'2026_07_17_063353_create_settings_table',2),(14,'2026_07_17_063354_create_import_batches_table',2),(15,'2026_07_17_041626_create_ai_generations_table',3),(16,'2026_07_17_045903_create_image_templates_table',4),(17,'2026_07_17_045904_create_image_generations_table',4),(18,'2026_07_17_153343_create_social_accounts_table',5),(19,'2026_07_17_153343_create_social_posts_table',5),(20,'2026_07_17_155737_create_contact_lists_table',6),(21,'2026_07_17_155737_create_contacts_table',6),(22,'2026_07_17_155738_create_contact_list_contact_table',6),(23,'2026_07_17_155738_create_email_campaigns_table',6),(24,'2026_07_17_155739_create_email_campaign_sends_table',6);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -548,7 +727,7 @@ CREATE TABLE `permissions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -557,7 +736,7 @@ CREATE TABLE `permissions` (
 
 LOCK TABLES `permissions` WRITE;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
-INSERT INTO `permissions` VALUES (1,'ver productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(2,'crear productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(3,'editar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(4,'eliminar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(5,'publicar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(6,'exportar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(7,'importar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(8,'ver colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(9,'crear colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(10,'editar colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(11,'eliminar colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(12,'ver categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(13,'crear categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(14,'editar categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(15,'eliminar categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(16,'ver usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(17,'crear usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(18,'editar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(19,'eliminar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(20,'administrar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(21,'ver configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(22,'administrar configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(23,'configurar integraciones configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(24,'ver actividad','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(25,'ver reportes','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(26,'acceder informacion sensible','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(27,'usar ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(28,'ver historial ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(29,'configurar ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(30,'ver imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(31,'crear imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(32,'editar imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(33,'eliminar imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(34,'ver redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(35,'crear redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(36,'editar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(37,'eliminar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(38,'aprobar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(39,'publicar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(40,'conectar cuentas redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37');
+INSERT INTO `permissions` VALUES (1,'ver productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(2,'crear productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(3,'editar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(4,'eliminar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(5,'publicar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(6,'exportar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(7,'importar productos','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(8,'ver colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(9,'crear colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(10,'editar colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(11,'eliminar colecciones','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(12,'ver categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(13,'crear categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(14,'editar categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(15,'eliminar categorias','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(16,'ver usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(17,'crear usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(18,'editar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(19,'eliminar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(20,'administrar usuarios','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(21,'ver configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(22,'administrar configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(23,'configurar integraciones configuracion','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(24,'ver actividad','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(25,'ver reportes','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(26,'acceder informacion sensible','web','2026-07-17 12:48:52','2026-07-17 12:48:52'),(27,'usar ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(28,'ver historial ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(29,'configurar ia','web','2026-07-17 10:17:45','2026-07-17 10:17:45'),(30,'ver imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(31,'crear imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(32,'editar imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(33,'eliminar imagenes','web','2026-07-17 11:00:50','2026-07-17 11:00:50'),(34,'ver redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(35,'crear redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(36,'editar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(37,'eliminar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(38,'aprobar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(39,'publicar redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(40,'conectar cuentas redes','web','2026-07-17 21:35:37','2026-07-17 21:35:37'),(41,'ver contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(42,'crear contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(43,'editar contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(44,'eliminar contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(45,'importar contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(46,'exportar contactos','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(47,'ver campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(48,'crear campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(49,'editar campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(50,'eliminar campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(51,'enviar campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25'),(52,'configurar campanas','web','2026-07-17 22:00:25','2026-07-17 22:00:25');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -688,7 +867,7 @@ CREATE TABLE `role_has_permissions` (
 
 LOCK TABLES `role_has_permissions` WRITE;
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
-INSERT INTO `role_has_permissions` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(2,1),(2,2),(2,3),(2,6),(3,1),(3,2),(3,3),(3,4),(3,6),(4,1),(4,2),(5,1),(5,2),(5,3),(6,1),(6,2),(6,3),(6,5),(7,1),(7,2),(8,1),(8,2),(8,3),(8,4),(8,5),(8,6),(8,7),(8,8),(8,9),(9,1),(9,2),(10,1),(10,2),(11,1),(11,2),(12,1),(12,2),(12,3),(12,4),(12,5),(12,6),(12,7),(12,8),(12,9),(13,1),(13,2),(14,1),(14,2),(15,1),(15,2),(16,1),(16,2),(16,9),(17,1),(17,2),(18,1),(18,2),(19,1),(19,2),(20,1),(20,2),(21,1),(21,2),(21,9),(22,1),(22,2),(23,1),(23,2),(24,1),(24,2),(24,3),(24,7),(24,9),(25,1),(25,2),(25,3),(25,5),(25,7),(25,9),(26,1),(27,1),(27,2),(27,3),(27,4),(27,6),(28,1),(28,2),(28,3),(28,7),(28,9),(29,1),(29,2),(30,1),(30,2),(30,3),(30,4),(30,6),(31,1),(31,2),(31,3),(31,4),(31,6),(32,1),(32,2),(32,3),(32,4),(33,1),(33,2),(33,4),(34,1),(34,2),(34,3),(34,4),(34,6),(34,7),(35,1),(35,2),(35,3),(35,4),(35,6),(36,1),(36,2),(36,3),(36,4),(36,6),(37,1),(37,2),(38,1),(38,2),(38,3),(39,1),(39,2),(39,3),(40,1),(40,2),(40,3);
+INSERT INTO `role_has_permissions` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(2,1),(2,2),(2,3),(2,6),(3,1),(3,2),(3,3),(3,4),(3,6),(4,1),(4,2),(5,1),(5,2),(5,3),(6,1),(6,2),(6,3),(6,5),(7,1),(7,2),(8,1),(8,2),(8,3),(8,4),(8,5),(8,6),(8,7),(8,8),(8,9),(9,1),(9,2),(10,1),(10,2),(11,1),(11,2),(12,1),(12,2),(12,3),(12,4),(12,5),(12,6),(12,7),(12,8),(12,9),(13,1),(13,2),(14,1),(14,2),(15,1),(15,2),(16,1),(16,2),(16,9),(17,1),(17,2),(18,1),(18,2),(19,1),(19,2),(20,1),(20,2),(21,1),(21,2),(21,9),(22,1),(22,2),(23,1),(23,2),(24,1),(24,2),(24,3),(24,7),(24,9),(25,1),(25,2),(25,3),(25,5),(25,7),(25,9),(26,1),(27,1),(27,2),(27,3),(27,4),(27,6),(28,1),(28,2),(28,3),(28,7),(28,9),(29,1),(29,2),(30,1),(30,2),(30,3),(30,4),(30,6),(31,1),(31,2),(31,3),(31,4),(31,6),(32,1),(32,2),(32,3),(32,4),(33,1),(33,2),(33,4),(34,1),(34,2),(34,3),(34,4),(34,6),(34,7),(35,1),(35,2),(35,3),(35,4),(35,6),(36,1),(36,2),(36,3),(36,4),(36,6),(37,1),(37,2),(38,1),(38,2),(38,3),(39,1),(39,2),(39,3),(40,1),(40,2),(40,3),(41,1),(41,2),(41,3),(41,5),(41,7),(41,9),(42,1),(42,2),(42,3),(42,5),(43,1),(43,2),(43,3),(43,5),(44,1),(44,2),(45,1),(45,2),(45,3),(46,1),(46,2),(46,3),(47,1),(47,2),(47,3),(47,4),(47,6),(47,7),(47,9),(48,1),(48,2),(48,3),(48,4),(48,6),(49,1),(49,2),(49,3),(49,4),(49,6),(50,1),(50,2),(51,1),(51,2),(51,3),(52,1),(52,2),(52,3);
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -766,7 +945,7 @@ CREATE TABLE `settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `settings_key_unique` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -897,13 +1076,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Administrador NODO 360','admin@nodo360mkt.site',NULL,NULL,1,'2026-07-17 21:43:06','127.0.0.1','2026-07-17 12:48:53','$2y$12$w8YYI.dNFQUKKNq8Y3MVgetBjudAIVyaoYtdv2ograOHnsxf/cDea',NULL,'2026-07-17 12:48:53','2026-07-17 21:43:06',NULL),(3,'Fede','fede@nodo360mkt.site','7712955995',NULL,1,'2026-07-17 10:36:24','127.0.0.1',NULL,'$2y$12$GcSRU0L/EU1cx/fCecJhG.nHj6qLCTMovKzPECM8n91KyM9kI3Q5K',NULL,'2026-07-17 10:35:20','2026-07-17 10:36:24',NULL);
+INSERT INTO `users` VALUES (1,'Administrador NODO 360','admin@nodo360mkt.site',NULL,NULL,1,'2026-07-17 22:18:20','127.0.0.1','2026-07-17 12:48:53','$2y$12$0DJyND5PsaqNfmPoG2gdIe6xg9wGH79HHSrCbXh16UWZIsj7lWO8O',NULL,'2026-07-17 12:48:53','2026-07-17 22:23:55',NULL),(3,'Fede','fede@nodo360mkt.site','7712955995',NULL,1,'2026-07-17 10:36:24','127.0.0.1',NULL,'$2y$12$GcSRU0L/EU1cx/fCecJhG.nHj6qLCTMovKzPECM8n91KyM9kI3Q5K',NULL,'2026-07-17 10:35:20','2026-07-17 10:36:24',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'nodo_catalog_manager'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -914,4 +1089,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-17 15:50:30
+-- Dump completed on 2026-07-17 16:36:39
