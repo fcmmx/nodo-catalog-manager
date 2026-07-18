@@ -1,5 +1,29 @@
 # Changelog — NODO Catalog Manager
 
+## [1.5.0-fase6] — 2026-07-17
+
+Sexta entrega funcional: generador de landing pages (Fase 6 de la hoja de ruta).
+
+### Agregado
+
+- Constructor de landing pages por secciones: problema, solución, beneficios, características, testimonios, preguntas frecuentes, producto destacado, texto libre, imagen, video y llamada a la acción — con reordenar/agregar/quitar secciones y persistencia como JSON.
+- Cada landing page puede vincularse opcionalmente a un producto del catálogo (autocompleta su información en la sección "Producto destacado").
+- Publicación con slug propio y URL pública dedicada (`/lp/{slug}`), independiente del panel administrativo — sin sesión ni permisos.
+- Validación antes de publicar: exige titular y al menos una sección de contenido, para evitar landing pages vacías en producción.
+- SEO completo por landing: título y descripción meta, imagen para Open Graph/redes sociales, URL canónica, y datos estructurados JSON-LD generados automáticamente (Organization, WebPage, Product cuando hay un producto vinculado, y FAQPage cuando hay una sección de preguntas frecuentes) — pensado para posicionamiento en buscadores tradicionales y motores de respuesta por IA (AEO/GEO).
+- Analítica opcional por landing: Google Analytics 4, Meta Pixel y Google Tag Manager, cada uno inyectado en la página pública únicamente si se configura su ID — sin scripts de seguimiento simulados ni cargados por defecto.
+- Formulario de captura de prospectos configurable (se puede desactivar por landing), con teléfono y mensaje opcionales, y seguimiento de UTM (source/medium/campaign) para atribución de campañas.
+- Integración con email marketing (Fase 5): si la landing tiene una lista de contactos asignada, cada prospecto se crea también como contacto con consentimiento registrado y queda agregado a esa lista; si no, el prospecto se guarda igual pero sin crear un contacto.
+- Reporte de prospectos por landing page con contador de vistas, prospectos y tasa de conversión.
+- Código QR descargable de cada landing page, generado con el mismo motor de la Fase 3 (endroid/qr-code).
+- Duplicar una landing page con un clic para reutilizarla en otra campaña o producto.
+- Permisos granulares nuevos: `ver landing`, `crear landing`, `editar landing`, `eliminar landing`, `publicar landing`.
+- 14 pruebas automatizadas adicionales (103 en total), incluyendo el flujo completo de publicación, renderizado público, captura de prospectos con y sin lista, y descarga del código QR.
+
+### Nota importante
+
+Google Analytics 4, Meta Pixel y Google Tag Manager son gratuitos y no requieren credenciales de NODO 360 más allá de crear las cuentas correspondientes (Google/Meta) y pegar el ID de medición en cada landing page — el sistema no simula ningún dato de analítica, solo carga el script oficial del proveedor cuando se configura.
+
 ## [1.4.0-fase5] — 2026-07-17
 
 Quinta entrega funcional: email marketing (Fase 5 de la hoja de ruta).

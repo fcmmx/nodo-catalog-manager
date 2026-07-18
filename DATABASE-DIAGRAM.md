@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 5)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 6)
 
 ## Diagrama entidad-relación
 
@@ -26,6 +26,11 @@ erDiagram
     USERS ||--o{ EMAIL_CAMPAIGNS : "crea"
     EMAIL_CAMPAIGNS ||--o{ EMAIL_CAMPAIGN_SENDS : "genera"
     CONTACTS ||--o{ EMAIL_CAMPAIGN_SENDS : "recibe"
+    PRODUCTS ||--o{ LANDING_PAGES : "destaca en"
+    USERS ||--o{ LANDING_PAGES : "crea"
+    CONTACT_LISTS ||--o{ LANDING_PAGES : "recibe prospectos de"
+    LANDING_PAGES ||--o{ LANDING_LEADS : "genera"
+    CONTACTS ||--o{ LANDING_LEADS : "origina"
 
     USERS {
         bigint id PK
@@ -276,6 +281,50 @@ erDiagram
         timestamp clicked_at
         text error_message
     }
+
+    LANDING_PAGES {
+        bigint id PK
+        string name
+        string slug UK
+        bigint product_id FK
+        string status
+        string headline
+        string subheadline
+        string hero_image_path
+        json sections
+        string cta_text
+        string cta_whatsapp_number
+        string cta_whatsapp_message
+        string cta_url
+        string meta_title
+        string meta_description
+        string og_image_path
+        json structured_data
+        string ga4_id
+        string meta_pixel_id
+        string gtm_id
+        boolean capture_form_enabled
+        bigint contact_list_id FK
+        int views_count
+        int leads_count
+        timestamp published_at
+        bigint created_by FK
+        timestamp deleted_at
+    }
+
+    LANDING_LEADS {
+        bigint id PK
+        bigint landing_page_id FK
+        bigint contact_id FK
+        string name
+        string email
+        string phone
+        text message
+        string utm_source
+        string utm_medium
+        string utm_campaign
+        string ip_address
+    }
 ```
 
 ## Descripción de tablas
@@ -301,6 +350,8 @@ erDiagram
 | `contact_list_contact` | Tabla pivote entre `contacts` y `contact_lists` (relación muchos a muchos). |
 | `email_campaigns` | Campañas de email marketing: tipo, asunto, remitente, lista destinataria, contenido por bloques (JSON), estado, programación, límite de lote y métricas acumuladas (enviados/aperturas/clics/rebotes/bajas). |
 | `email_campaign_sends` | Un registro por cada envío individual de una campaña a un contacto: token único (usado en el seguimiento y la baja), estado, marcas de tiempo de envío/apertura/clic y mensaje de error. |
+| `landing_pages` | Landing pages: producto vinculado (opcional), estado, contenido del hero, secciones por bloques (JSON), llamada a la acción, SEO/Open Graph/datos estructurados, IDs de analítica (GA4/Meta Pixel/GTM), configuración de captura de prospectos, y métricas acumuladas (vistas/prospectos). |
+| `landing_leads` | Prospectos capturados en el formulario de una landing page: datos de contacto, mensaje, atribución UTM, IP, y el contacto de email marketing que se creó a partir de él (si la landing tiene una lista configurada). |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave
@@ -313,6 +364,7 @@ erDiagram
 - Un **usuario** puede tener uno o varios **roles**, y cada **rol** agrupa uno o varios **permisos**.
 - Un **contacto** puede pertenecer a varias **listas**, y una **lista** puede tener varios **contactos** (muchos a muchos).
 - Una **campaña de email** pertenece opcionalmente a una **lista de contactos** (su destinataria) y genera muchos **envíos**, uno por cada **contacto** elegible (suscrito y con consentimiento) de la lista.
+- Una **landing page** pertenece opcionalmente a un **producto** (para la sección "producto destacado") y a una **lista de contactos** (destino de los prospectos capturados), y genera muchos **prospectos**; cada prospecto puede originar opcionalmente un **contacto** de email marketing.
 
 ## Generar el diagrama visual
 

@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 5). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 6). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -75,9 +75,13 @@ Con esos tres datos, agrega la cuenta en el sistema (el token se guarda cifrado)
 
 **No implementado todavía.** Instagram (requiere creación de contenedor de medios antes de publicar, distinto al feed de Facebook), el Agente IA para WhatsApp vía API oficial, y el feed de Meta Commerce se construirán en fases posteriores. Mientras tanto, las publicaciones para Instagram se pueden preparar, programar y descargar desde Redes Sociales, marcándolas como "publicada manualmente" tras publicarlas tú mismo.
 
-## Google (Ads, Analytics, Tag Manager) — ⏳ Pendiente (fase futura)
+## Google Analytics 4, Meta Pixel y Google Tag Manager — ✅ Listo (Fase 6)
 
-No implementado en esta fase. Se integrará como parte del módulo de Growth Marketing y del generador de landing pages en una fase posterior.
+Cada landing page permite pegar su propio ID de **Google Analytics 4** (medición), **Meta Pixel** y **Google Tag Manager** (`Landing Pages → editar → Analítica`). Son servicios gratuitos: no requieren clave de API ni credenciales de NODO 360 más allá de crear la cuenta correspondiente en Google/Meta y copiar el ID. El sistema inyecta el script oficial de cada proveedor en la página pública **solo si el campo tiene un valor** — sin IDs configurados, la landing no carga ningún script de seguimiento de terceros.
+
+## Google Ads — ⏳ Pendiente (fase futura)
+
+No implementado. La medición de conversiones de Google Ads requiere una cuenta publicitaria activa y un ID de conversión específico; se integrará cuando NODO 360 defina qué campañas de Ads va a correr.
 
 ## Generador de imágenes — ✅ Listo (Fase 3)
 
@@ -127,7 +131,9 @@ Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor ele
 | Meta — Facebook (publicación automática) | ✅ Listo para conectar (Fase 4) | Sí, token de página de Meta |
 | Meta — Instagram/WhatsApp/Commerce | ⏳ Fase futura | Sí, cuando se construya |
 | LinkedIn / TikTok / X / Google Business (publicación automática) | ⏳ Fase futura | Sí, cuando se construya |
-| Google (Ads/Analytics/GTM) | ⏳ Fase futura | Sí, cuando se construya |
+| Google Ads | ⏳ Fase futura | Sí, cuando se construya |
 | Generador de imágenes (composición) | ✅ Listo (Fase 3) | No |
 | IA generativa — fondo de imagen (opcional) | ✅ Listo para configurar (Fase 3) | Sí, misma clave de OpenAI |
 | Email marketing (SMTP/Brevo/Mailgun/SES/SendGrid) | ✅ Listo para configurar (Fase 5) | Sí, credenciales SMTP del proveedor elegido |
+| Landing pages (constructor y publicación) | ✅ Listo (Fase 6) | No |
+| Google Analytics 4 / Meta Pixel / Google Tag Manager (por landing) | ✅ Listo para configurar (Fase 6) | Sí, IDs gratuitos de tus cuentas de Google/Meta |

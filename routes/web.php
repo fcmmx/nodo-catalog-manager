@@ -22,6 +22,8 @@ use App\Http\Controllers\Email\TrackingController;
 use App\Http\Controllers\Images\GeneratorController as ImageGeneratorController;
 use App\Http\Controllers\Images\TemplateController as ImageTemplateController;
 use App\Http\Controllers\Install\InstallController;
+use App\Http\Controllers\Landing\LandingPageController;
+use App\Http\Controllers\Landing\PublicLandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Social\SocialAccountController;
 use App\Http\Controllers\Social\SocialPostController;
@@ -33,6 +35,10 @@ Route::get('/email/abrir/{token}', [TrackingController::class, 'pixel'])->name('
 Route::get('/email/clic/{token}', [TrackingController::class, 'click'])->name('email.track.click');
 Route::get('/email/baja/{token}', [TrackingController::class, 'unsubscribeForm'])->name('email.unsubscribe.form');
 Route::post('/email/baja/{token}', [TrackingController::class, 'unsubscribe'])->name('email.unsubscribe');
+
+// Landing pages públicas (sin autenticación): página renderizada y captura de prospectos.
+Route::get('/lp/{slug}', [PublicLandingController::class, 'show'])->name('landing.show');
+Route::post('/lp/{slug}/prospecto', [PublicLandingController::class, 'captureLead'])->name('landing.lead');
 
 Route::redirect('/', '/dashboard');
 
@@ -165,5 +171,14 @@ Route::middleware('auth')->group(function () {
         Route::get('configuracion', [EmailSettingsController::class, 'edit'])->name('settings.edit');
         Route::put('configuracion', [EmailSettingsController::class, 'update'])->name('settings.update');
         Route::post('configuracion/probar', [EmailSettingsController::class, 'test'])->name('settings.test');
+    });
+
+    Route::middleware('permission:ver landing')->group(function () {
+        Route::post('landing/{landing}/duplicar', [LandingPageController::class, 'duplicate'])->name('landing.duplicate')->middleware('permission:crear landing');
+        Route::post('landing/{landing}/publicar', [LandingPageController::class, 'publish'])->name('landing.publish')->middleware('permission:publicar landing');
+        Route::post('landing/{landing}/despublicar', [LandingPageController::class, 'unpublish'])->name('landing.unpublish')->middleware('permission:publicar landing');
+        Route::get('landing/{landing}/prospectos', [LandingPageController::class, 'leads'])->name('landing.leads');
+        Route::get('landing/{landing}/qr', [LandingPageController::class, 'qrCode'])->name('landing.qr');
+        Route::resource('landing', LandingPageController::class)->except(['show']);
     });
 });

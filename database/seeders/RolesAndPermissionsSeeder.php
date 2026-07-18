@@ -26,6 +26,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'redes' => ['ver', 'crear', 'editar', 'eliminar', 'aprobar', 'publicar', 'conectar cuentas'],
         'contactos' => ['ver', 'crear', 'editar', 'eliminar', 'importar', 'exportar'],
         'campanas' => ['ver', 'crear', 'editar', 'eliminar', 'enviar', 'configurar'],
+        'landing' => ['ver', 'crear', 'editar', 'eliminar', 'publicar'],
     ];
 
     public function run(): void
@@ -51,33 +52,37 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver redes', 'crear redes', 'editar redes', 'aprobar redes', 'publicar redes', 'conectar cuentas redes',
                 'ver contactos', 'crear contactos', 'editar contactos', 'importar contactos', 'exportar contactos',
                 'ver campanas', 'crear campanas', 'editar campanas', 'enviar campanas', 'configurar campanas',
+                'ver landing', 'crear landing', 'editar landing', 'publicar landing',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes', 'editar imagenes', 'eliminar imagenes',
                 'ver redes', 'crear redes', 'editar redes',
                 'ver campanas', 'crear campanas', 'editar campanas',
+                'ver landing', 'crear landing', 'editar landing',
             ],
             'Ventas' => [
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
                 'ver contactos', 'crear contactos', 'editar contactos',
+                'ver landing',
             ],
             'Editor' => [
                 'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
                 'ver imagenes', 'crear imagenes',
                 'ver redes', 'crear redes', 'editar redes',
                 'ver campanas', 'crear campanas', 'editar campanas',
+                'ver landing', 'crear landing', 'editar landing',
             ],
             'Analista' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia', 'ver redes',
-                'ver contactos', 'ver campanas',
+                'ver contactos', 'ver campanas', 'ver landing',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',
             ],
             'Solo lectura' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes', 'ver historial ia',
-                'ver contactos', 'ver campanas',
+                'ver contactos', 'ver campanas', 'ver landing',
             ],
         ];
 

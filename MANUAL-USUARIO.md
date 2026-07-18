@@ -141,14 +141,27 @@ Menú lateral → **Email Marketing → Campañas** (requiere permiso "ver campa
 5. Guarda la campaña y usa **Enviar prueba** (a tu propio correo) antes de programarla. Luego **Programar envío** (fecha y hora) o **Enviar ahora** — el envío real ocurre en lotes vía el cron del servidor (`email:send-due-campaigns`, cada minuto), respetando el tamaño de lote configurado para no saturar al proveedor SMTP. Puedes **pausar** una campaña en curso.
 6. El **reporte de campaña** muestra enviados, aperturas, clics, rebotes y bajas, con el detalle de cada envío. Cada correo incluye un enlace de baja obligatorio: al hacer clic, el destinatario ve una página de confirmación pública (sin iniciar sesión) y, al confirmar, queda excluido de futuros envíos.
 
-## 14. Mi perfil
+## 14. Landing Pages
+
+Menú lateral → **Landing Pages** (requiere permiso "ver landing").
+
+1. **+ Nueva landing page**: dale un nombre interno, vincula opcionalmente un producto del catálogo (autocompleta la sección "Producto destacado"), y define el titular y subtitular que aparecerán en el hero. Puedes subir una imagen principal y, opcionalmente, una imagen distinta para compartir en redes (Open Graph).
+2. Configura la **llamada a la acción**: texto del botón, y un enlace externo y/o número de WhatsApp con mensaje predefinido — si defines WhatsApp, el botón abre un chat directo.
+3. Arma el **contenido** con el constructor de secciones: problema, solución, beneficios, características, testimonios, preguntas frecuentes, producto destacado, texto libre, imagen, video (YouTube/Vimeo) y llamada a la acción — agrega, reordena y quita secciones libremente. Las secciones de tipo lista (problema, solución, beneficios, características, testimonios, FAQ) permiten agregar tantos elementos como necesites.
+4. En **SEO y datos estructurados**, define el título y descripción que aparecerán en buscadores y al compartir en redes. El sistema genera automáticamente los datos estructurados (JSON-LD) de tipo Organización, Página, Producto (si hay uno vinculado) y Preguntas Frecuentes (si agregaste esa sección) — pensados tanto para buscadores tradicionales como para motores de respuesta por IA.
+5. En **Analítica**, agrega los IDs de Google Analytics 4, Meta Pixel y/o Google Tag Manager si quieres medir el tráfico y las conversiones — son gratuitos y los obtienes directamente de tu cuenta de Google/Meta. Si los dejas vacíos, no se carga ningún script de seguimiento.
+6. En **Captura de prospectos**, decide si la landing muestra un formulario de contacto y, si quieres, elige una lista de contactos de email marketing (Fase 5): cada prospecto que complete el formulario se agregará también como contacto con consentimiento registrado.
+7. Al guardar, la landing queda en **Borrador**. Usa **Publicar** para ponerla en línea con su propia URL (`tudominio.com/lp/tu-slug`) — el sistema exige que tenga al menos un titular y una sección de contenido antes de permitir publicarla. Puedes **despublicar** en cualquier momento para quitarla de circulación sin perder su contenido.
+8. **Ver prospectos** muestra el reporte de esa landing: vistas, prospectos capturados, tasa de conversión y el detalle de cada prospecto (incluyendo el origen UTM si llegó desde una campaña). **Descargar QR** genera un código QR listo para imprimir que apunta a la URL pública. **Duplicar** crea una copia en borrador para reutilizarla en otra campaña o producto.
+
+## 15. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 15. Modo claro/oscuro
+## 16. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 16. Módulos en fases siguientes
+## 17. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: landing pages, CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12) y **email marketing** (sección 13) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13) y **landing pages** (sección 14) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

@@ -1,4 +1,4 @@
-# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 5)
+# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 6)
 
 ## Alcance
 
@@ -138,6 +138,26 @@ Comando de consola: `php artisan social:publish-due` (programado cada minuto ví
 | GET | `/email/campanas/{id}/reporte` | `ver campanas` |
 
 Comando de consola: `php artisan email:send-due-campaigns` (programado cada minuto vía el scheduler, ver `INSTALL-HOSTINGER.md`).
+
+## Landing Pages (Fase 6)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/landing` | `ver landing` |
+| GET/POST | `/landing/create` | `crear landing` |
+| GET/PUT/DELETE | `/landing/{id}` | `editar landing` / `eliminar landing` |
+| POST | `/landing/{id}/duplicar` | `crear landing` |
+| POST | `/landing/{id}/publicar` | `publicar landing` (exige titular y al menos una sección) |
+| POST | `/landing/{id}/despublicar` | `publicar landing` |
+| GET | `/landing/{id}/prospectos` | `ver landing` |
+| GET | `/landing/{id}/qr` | `ver landing` (descarga PNG del código QR) |
+
+### Enlaces públicos de landing pages (sin autenticación)
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/lp/{slug}` | Renderiza la landing page publicada (404 si está en borrador o no existe) |
+| POST | `/lp/{slug}/prospecto` | Captura un prospecto desde el formulario público |
 
 ### Enlaces públicos de email marketing (sin autenticación)
 
