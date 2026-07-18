@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 8). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 9 — roadmap completo). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -140,6 +140,12 @@ Qué SÍ está implementado y probado:
 
 Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor elegido. Mientras no se configuren, "Enviar prueba" y el envío programado muestran con claridad el motivo — no se simula ningún envío.
 
+## Auditor SEO/AEO/GEO — IA Ready Website — ✅ Listo (Fase 9)
+
+El auditor (`IA Ready Website → Auditor SEO/AEO/GEO`) no depende de ninguna API externa ni credencial: analiza directamente el HTML público, `robots.txt`, `sitemap.xml` y `llms.txt` de la URL que le indiques, exactamente como lo haría un navegador o un rastreador. No usa ningún servicio de terceros (no llama a Google PageSpeed, Ahrefs, SEMrush ni ninguna API de pago) — todas las 19 señales evaluadas se calculan localmente sobre el contenido descargado.
+
+El reporte en PDF se genera con `dompdf/dompdf`, una librería PHP pura sin binarios externos, compatible con hosting compartido.
+
 ## Resumen
 
 | Integración | Estado | Requiere credenciales de NODO 360 |
@@ -161,3 +167,4 @@ Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor ele
 | CRM (pipeline, etapas, actividades) | ✅ Listo (Fase 7) | No |
 | WhatsApp — enlace directo (`wa.me`) en el CRM | ✅ Listo (Fase 7) | No |
 | WhatsApp Business API (mensajes automáticos) | ⏳ Fase futura | Sí, cuando se construya |
+| Auditor SEO/AEO/GEO (IA Ready Website) | ✅ Listo (Fase 9) | No |

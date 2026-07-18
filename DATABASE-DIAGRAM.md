@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 8)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 9 — completo)
 
 ## Diagrama entidad-relación
 
@@ -38,6 +38,7 @@ erDiagram
     LANDING_LEADS ||--o| CRM_DEALS : "convertido en"
     CRM_DEALS ||--o{ CRM_ACTIVITIES : "registra"
     USERS ||--o{ CRM_ACTIVITIES : "crea"
+    USERS ||--o{ SEO_AUDITS : "solicita"
 
     USERS {
         bigint id PK
@@ -380,6 +381,20 @@ erDiagram
         string ip_address
         timestamp created_at
     }
+
+    SEO_AUDITS {
+        bigint id PK
+        string url
+        string status
+        tinyint score
+        tinyint seo_score
+        tinyint aeo_score
+        tinyint geo_score
+        json results
+        text error_message
+        bigint created_by FK
+        timestamp created_at
+    }
 ```
 
 ## Descripción de tablas
@@ -411,6 +426,7 @@ erDiagram
 | `crm_deals` | Oportunidades del CRM: contacto, producto (opcional), etapa actual, valor estimado, origen (manual/landing/importación), estado, responsable asignado y el prospecto de landing page del que se originó (si aplica). |
 | `crm_activities` | Notas, llamadas, reuniones, tareas/recordatorios (con fecha límite y marca de completado) y registros de WhatsApp asociados a una oportunidad del CRM. |
 | `commerce_sync_logs` | Historial de sincronización del feed de catálogo: cada solicitud del feed (CSV/XML) y cada prueba de conexión con Meta, con estado, cantidad de productos, mensaje e IP de origen. |
+| `seo_audits` | Auditorías del auditor SEO/AEO/GEO: URL analizada, estado, calificación general y por categoría (SEO/AEO/GEO), el detalle completo de las señales evaluadas (JSON) y el usuario que la solicitó. |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave

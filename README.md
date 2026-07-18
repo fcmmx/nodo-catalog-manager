@@ -4,9 +4,9 @@
 
 Sistema web para administrar el catálogo de productos y servicios de **NODO 360 MARKETING TECHNOLOGY**, desarrollado en Laravel 12 / PHP 8.2+ / MySQL, pensado para desplegarse en hosting compartido (Hostinger) sin depender de un servidor Node.js en producción.
 
-## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4 + Fase 5 + Fase 6 + Fase 7 + Fase 8
+## Estado del proyecto: Completo — Fase 1 a Fase 9 (roadmap terminado)
 
-Este repositorio se desarrolla por fases, acordado con el propietario del sistema. Todo lo incluido está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
+Este repositorio se desarrolló por fases, acordado con el propietario del sistema. Las 9 fases planeadas están **completas y funcionales, sin pantallas simuladas ni botones decorativos**:
 
 **Fase 1 — Núcleo**
 - ✅ Instalador web guiado (`/install`)
@@ -68,9 +68,15 @@ Este repositorio se desarrolla por fases, acordado con el propietario del sistem
 - ✅ Conexión con el catálogo de Meta (ID + token cifrado) con prueba de conexión real contra la Graph API
 - ✅ Regenerar el enlace del feed para revocar acceso; historial de sincronización con cada solicitud del feed y cada prueba de conexión
 
-**130 pruebas automatizadas (PHPUnit)** en total.
+**Fase 9 — IA Ready Website (auditor SEO/AEO/GEO)**
+- ✅ Auditor de URLs externas: descarga en tiempo real el HTML, `robots.txt`, `sitemap.xml` y `llms.txt` del sitio analizado — sin simular ninguna señal
+- ✅ Calificación de 0 a 100 con desglose en SEO tradicional (40 pts), AEO — motores de respuesta por IA (30 pts) y GEO — motores generativos (30 pts), 19 señales verificadas en total
+- ✅ Reporte con explicación de cada señal (aprobada/no aprobada, puntos, detalle) y **descarga en PDF** (dompdf, sin dependencias externas)
+- ✅ Historial de auditorías anteriores
 
-**No incluido todavía** (módulo completo, pendiente de fase siguiente, ver `CHANGELOG.md`): auditor IA-Ready (SEO/AEO/GEO). Requiere credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
+**139 pruebas automatizadas (PHPUnit)** en total.
+
+Con la Fase 9 se completan las **9 fases del roadmap original**. Todos los módulos que requieren credenciales de terceros (IA, SMTP, Meta, etc.) están completamente construidos y probados — indican con claridad cuándo falta que NODO 360 proporcione la credencial correspondiente, en vez de simular una respuesta. Ver `CONFIGURACION-APIS.md` para el detalle de cada integración.
 
 ## Tecnología
 
@@ -82,6 +88,8 @@ Este repositorio se desarrolla por fases, acordado con el propietario del sistem
 | Auditoría | spatie/laravel-activitylog |
 | Importación/Exportación | maatwebsite/excel, phpoffice/phpspreadsheet |
 | Imágenes | intervention/image |
+| Códigos QR | endroid/qr-code |
+| Reportes PDF | dompdf/dompdf |
 | Frontend | Blade + Tailwind CSS 4 (compilado con el binario standalone, **sin Node.js en producción**) + Alpine.js (servido localmente, sin CDN) |
 | Colas | Laravel Queues (driver `database`, procesadas por cron — ver `INSTALL-HOSTINGER.md`) |
 
@@ -98,7 +106,7 @@ resources/views/            Vistas Blade (layouts, catálogo, admin, instalador)
 resources/css/app.css       Fuente de Tailwind (compilar con bin/tailwindcss.exe)
 public/build/app.css        CSS ya compilado y listo para producción
 public/vendor/alpine/       Alpine.js servido localmente
-tests/                      130 pruebas automatizadas
+tests/                      139 pruebas automatizadas
 ```
 
 ## Instalación rápida (desarrollo local)
@@ -139,7 +147,7 @@ Para producción en Hostinger, sigue la guía completa en **[INSTALL-HOSTINGER.m
 - [SEGURIDAD.md](SEGURIDAD.md) — Medidas de seguridad implementadas y recomendaciones
 - [BACKUP-RESTORE.md](BACKUP-RESTORE.md) — Respaldo y restauración
 - [DATABASE-DIAGRAM.md](DATABASE-DIAGRAM.md) — Diagrama y descripción de la base de datos
-- [API-DOCUMENTATION.md](API-DOCUMENTATION.md) — Rutas web internas de la Fase 1
+- [API-DOCUMENTATION.md](API-DOCUMENTATION.md) — Rutas web internas de todo el sistema
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — Solución de problemas comunes
 - [CHANGELOG.md](CHANGELOG.md) — Historial de versiones y hoja de ruta de fases
 

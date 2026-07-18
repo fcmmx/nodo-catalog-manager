@@ -1,4 +1,4 @@
-# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 8)
+# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 9 — completo)
 
 ## Alcance
 
@@ -207,6 +207,16 @@ Protegido por un token propio de alta entropía en la URL (no por sesión), pens
 |---|---|---|
 | GET | `/feed/{token}/catalogo.csv` | Feed CSV de productos publicados con precio y enlace |
 | GET | `/feed/{token}/catalogo.xml` | Mismo feed en XML (RSS 2.0 / espacio de nombres de Google Shopping) |
+
+## Auditor SEO/AEO/GEO — IA Ready Website (Fase 9)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/auditoria` | `ver auditoria` (historial) |
+| POST | `/auditoria` | `crear auditoria` (JSON/form: `url`; ejecuta el análisis en tiempo real) |
+| GET | `/auditoria/{id}` | `ver auditoria` (desglose de resultados) |
+| GET | `/auditoria/{id}/pdf` | `ver auditoria` (descarga el reporte en PDF) |
+| DELETE | `/auditoria/{id}` | `crear auditoria` |
 
 ## Instalador
 

@@ -175,14 +175,29 @@ Menú lateral → **Meta Commerce → Feed de catálogo** (requiere permiso "ver
 4. Opcionalmente, conecta el **ID de catálogo** y el **token de acceso** de tu cuenta de Meta Business Suite para usar el botón **Probar conexión**, que verifica en tiempo real que las credenciales son correctas contra la Graph API de Meta — esto no es necesario para que el feed funcione, ya que Meta lee el catálogo directamente de la URL.
 5. **Meta Commerce → Historial de sincronización** muestra cada vez que el feed fue solicitado (por Meta o cualquier otra plataforma) y cada prueba de conexión, con fecha, estado y cantidad de productos.
 
-## 17. Mi perfil
+## 17. Auditor SEO/AEO/GEO (IA Ready Website)
+
+Menú lateral → **IA Ready Website → Auditor SEO/AEO/GEO** (requiere permiso "ver auditoria").
+
+1. Pega la URL completa de cualquier sitio (el tuyo o el de un cliente) en **Nueva auditoría** y presiona **Analizar sitio**. El sistema descarga en tiempo real el HTML público de esa página, además de `robots.txt`, `sitemap.xml` y `llms.txt` si existen — el análisis puede tardar unos segundos según la velocidad del sitio analizado.
+2. El resultado muestra una **calificación general de 0 a 100** y su desglose en tres categorías:
+   - **SEO tradicional**: título, meta descripción, un solo H1, enlace canónico, compatibilidad móvil, texto alternativo en imágenes, que no esté bloqueada para buscadores, sitemap accesible.
+   - **AEO** (optimización para motores de respuesta por IA como ChatGPT o Perplexity): datos estructurados, sección de preguntas frecuentes (FAQPage), jerarquía de encabezados, encabezados en forma de pregunta, etiquetas Open Graph.
+   - **GEO** (optimización para motores generativos): que `robots.txt` no bloquee a los rastreadores de IA (GPTBot, ClaudeBot, etc.), archivo `llms.txt`, estructura HTML5 semántica, datos estructurados de identidad, contenido suficiente.
+3. Cada señal muestra si se aprobó o no, cuántos puntos aportó y una explicación de por qué — para que sepas exactamente qué corregir.
+4. **Descargar PDF** genera un reporte listo para compartir con un cliente o guardar como referencia.
+5. El **historial** guarda todas las auditorías anteriores para comparar el progreso a lo largo del tiempo.
+
+## 18. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 18. Modo claro/oscuro
+## 19. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 19. Módulos en fases siguientes
+## 20. Roadmap completo
+
+Las 9 fases del proyecto original ya están disponibles: generación de **texto** con IA (sección 10), **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13), **landing pages** (sección 14), **CRM** (sección 15), **Meta Commerce y feeds** (sección 16) y el **auditor SEO/AEO/GEO** (sección 17). Ver `CHANGELOG.md` para el historial completo de versiones.
 
 Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: auditor IA-Ready (SEO/AEO/GEO). La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13), **landing pages** (sección 14), **CRM** (sección 15) y **Meta Commerce y feeds** (sección 16) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

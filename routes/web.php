@@ -30,6 +30,7 @@ use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\Landing\LandingPageController;
 use App\Http\Controllers\Landing\PublicLandingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeoAudit\AuditController as SeoAuditController;
 use App\Http\Controllers\Social\SocialAccountController;
 use App\Http\Controllers\Social\SocialPostController;
 use Illuminate\Support\Facades\Route;
@@ -210,5 +211,13 @@ Route::middleware('auth')->group(function () {
         Route::post('configuracion/probar', [CommerceSettingsController::class, 'test'])->name('settings.test')->middleware('permission:configurar comercio');
         Route::post('configuracion/regenerar-token', [CommerceSettingsController::class, 'regenerateToken'])->name('settings.regenerate-token')->middleware('permission:configurar comercio');
         Route::get('historial', [CommerceSettingsController::class, 'history'])->name('history');
+    });
+
+    Route::prefix('auditoria')->name('seo-audit.')->middleware('permission:ver auditoria')->group(function () {
+        Route::get('/', [SeoAuditController::class, 'index'])->name('index');
+        Route::post('/', [SeoAuditController::class, 'store'])->name('store')->middleware('permission:crear auditoria');
+        Route::get('{audit}', [SeoAuditController::class, 'show'])->name('show');
+        Route::get('{audit}/pdf', [SeoAuditController::class, 'downloadPdf'])->name('pdf');
+        Route::delete('{audit}', [SeoAuditController::class, 'destroy'])->name('destroy')->middleware('permission:crear auditoria');
     });
 });

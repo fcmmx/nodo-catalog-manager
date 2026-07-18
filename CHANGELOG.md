@@ -1,5 +1,26 @@
 # Changelog — NODO Catalog Manager
 
+## [2.0.0-fase9] — 2026-07-17
+
+Novena y última entrega funcional del roadmap original: auditor SEO/AEO/GEO — "IA Ready Website" (Fase 9). Con esta fase se completan las 9 fases planeadas para NODO Catalog Manager.
+
+### Agregado
+
+- Auditor de sitios web (`Auditoría → Auditor SEO/AEO/GEO`): analiza cualquier URL externa en tiempo real (descarga su HTML público, `robots.txt`, `sitemap.xml` y `llms.txt`) y genera una calificación de **0 a 100** con desglose en tres categorías:
+  - **SEO tradicional** (40 pts): HTTPS, título, meta descripción, un solo H1, enlace canónico, viewport móvil, texto alternativo en imágenes, no bloqueada por `noindex`, sitemap accesible.
+  - **AEO — optimización para motores de respuesta por IA** (30 pts): datos estructurados JSON-LD, esquema FAQPage/QAPage, jerarquía de encabezados lógica, encabezados formulados como pregunta, etiquetas Open Graph completas.
+  - **GEO — optimización para motores generativos** (30 pts): `robots.txt` no bloquea rastreadores de IA (GPTBot, ClaudeBot, Google-Extended, PerplexityBot), archivo `llms.txt`, estructura HTML5 semántica, datos estructurados de identidad (Organization/WebSite/Person), contenido textual suficiente.
+- Cada señal se calcula sobre el contenido real descargado — nada se simula ni se supone; si la URL no responde, la auditoría queda marcada como error con el motivo exacto.
+- Reporte de resultados con calificación general, desglose por categoría y el detalle (aprobado/no aprobado, puntos, explicación) de cada una de las 19 señales evaluadas.
+- **Reporte descargable en PDF**, generado con `dompdf/dompdf` (sin dependencias externas ni binarios), listo para compartir con un cliente.
+- Historial de auditorías anteriores, con calificación y fecha de cada una.
+- Permisos granulares nuevos: `ver auditoria`, `crear auditoria`.
+- 9 pruebas automatizadas adicionales (139 en total), incluyendo la comparación de un sitio bien optimizado contra uno deficiente, el manejo de URLs inalcanzables, el bloqueo de rastreadores de IA en `robots.txt` y la generación real del PDF.
+
+### Nota importante
+
+El auditor no requiere ninguna credencial de terceros — analiza directamente el HTML y los archivos públicos de la URL que se le indique, igual que lo haría un navegador o un rastreador. No inventa calificaciones: cada punto corresponde a una señal verificada realmente en el sitio analizado.
+
 ## [1.7.0-fase8] — 2026-07-17
 
 Octava entrega funcional: Meta Commerce y feeds de catálogo (Fase 8 de la hoja de ruta).

@@ -29,6 +29,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'landing' => ['ver', 'crear', 'editar', 'eliminar', 'publicar'],
         'crm' => ['ver', 'crear', 'editar', 'eliminar', 'asignar'],
         'comercio' => ['ver', 'configurar'],
+        'auditoria' => ['ver', 'crear'],
     ];
 
     public function run(): void
@@ -57,6 +58,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver landing', 'crear landing', 'editar landing', 'publicar landing',
                 'ver crm', 'crear crm', 'editar crm', 'asignar crm',
                 'ver comercio', 'configurar comercio',
+                'ver auditoria', 'crear auditoria',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
@@ -80,14 +82,14 @@ class RolesAndPermissionsSeeder extends Seeder
             ],
             'Analista' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia', 'ver redes',
-                'ver contactos', 'ver campanas', 'ver landing', 'ver crm', 'ver comercio',
+                'ver contactos', 'ver campanas', 'ver landing', 'ver crm', 'ver comercio', 'ver auditoria',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',
             ],
             'Solo lectura' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes', 'ver historial ia',
-                'ver contactos', 'ver campanas', 'ver landing', 'ver crm', 'ver comercio',
+                'ver contactos', 'ver campanas', 'ver landing', 'ver crm', 'ver comercio', 'ver auditoria',
             ],
         ];
 
