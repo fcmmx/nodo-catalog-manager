@@ -1,4 +1,4 @@
-# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 7)
+# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 8)
 
 ## Alcance
 
@@ -188,6 +188,25 @@ Incluidos en el HTML de cada correo enviado; usan un token propio de alta entrop
 | DELETE | `/crm/actividades/{id}` | `editar crm` |
 | GET/POST | `/crm/etapas` | `ver crm` / `crear crm` |
 | GET/PUT/DELETE | `/crm/etapas/{id}` | `editar crm` / `eliminar crm` |
+
+## Meta Commerce y feeds (Fase 8)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/admin/comercio/configuracion` | `ver comercio` |
+| PUT | `/admin/comercio/configuracion` | `configurar comercio` |
+| POST | `/admin/comercio/configuracion/probar` | `configurar comercio` (prueba real de solo lectura contra la Graph API de Meta) |
+| POST | `/admin/comercio/configuracion/regenerar-token` | `configurar comercio` (invalida la URL del feed anterior) |
+| GET | `/admin/comercio/historial` | `ver comercio` |
+
+### Feed público de catálogo (sin autenticación)
+
+Protegido por un token propio de alta entropía en la URL (no por sesión), pensado para que Meta Commerce Manager u otra plataforma lo lea de forma periódica.
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/feed/{token}/catalogo.csv` | Feed CSV de productos publicados con precio y enlace |
+| GET | `/feed/{token}/catalogo.xml` | Mismo feed en XML (RSS 2.0 / espacio de nombres de Google Shopping) |
 
 ## Instalador
 

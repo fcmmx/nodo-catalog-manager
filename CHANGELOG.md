@@ -1,5 +1,24 @@
 # Changelog — NODO Catalog Manager
 
+## [1.7.0-fase8] — 2026-07-17
+
+Octava entrega funcional: Meta Commerce y feeds de catálogo (Fase 8 de la hoja de ruta).
+
+### Agregado
+
+- Feed de catálogo público en formato **CSV** y **XML** (RSS 2.0 / Google Shopping, compatible con Meta Commerce Catalog), protegido por un token propio de alta entropía en la URL — listo para registrarse como "fuente de datos programada" en Meta Commerce Manager.
+- El feed incluye únicamente productos **publicados** (estado activo) con precio y enlace público configurados — los campos obligatorios de cualquier catálogo real; un producto sin ellos se omite en vez de inventar un valor.
+- Mapeo de disponibilidad del catálogo interno al vocabulario estándar de feeds (`in stock`, `out of stock`, `available for order`, `preorder`).
+- Configuración de la conexión con Meta Commerce Manager (`Meta Commerce → Feed de catálogo`): ID de catálogo, ID de cuenta de negocio (opcional) y token de acceso cifrado, con botón **Probar conexión** que hace una llamada real de solo lectura a la Graph API de Meta para confirmar las credenciales — sin publicar ni modificar nada.
+- **Regenerar enlace del feed**: invalida el token anterior y genera uno nuevo, para revocar el acceso si la URL se filtró.
+- Historial de sincronización: cada solicitud del feed (por Meta o cualquier otra plataforma) y cada prueba de conexión quedan registradas con fecha, estado, cantidad de productos e IP de origen.
+- Permisos granulares nuevos: `ver comercio`, `configurar comercio`.
+- 12 pruebas automatizadas adicionales (130 en total), incluyendo la generación del feed, el filtrado de productos elegibles, la protección por token, la prueba de conexión con HTTP simulado (éxito y token inválido) y la regeneración del enlace.
+
+### Nota importante
+
+El feed público es la forma estándar en que Meta Commerce Manager sincroniza catálogos (se programa una vez en Meta para que lea la URL periódicamente) — funciona sin ninguna credencial de Meta. Conectar el catálogo (ID + token) solo habilita la prueba de conexión real contra la Graph API; sin esas credenciales, el sistema lo indica con claridad en vez de simular una conexión exitosa.
+
 ## [1.6.0-fase7] — 2026-07-17
 
 Séptima entrega funcional: CRM (Fase 7 de la hoja de ruta).

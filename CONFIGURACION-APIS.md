@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 7). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 8). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -71,9 +71,23 @@ Con esos tres datos, agrega la cuenta en el sistema (el token se guarda cifrado)
 
 **No se ha usado ningún token de prueba ni credencial simulada** — las pruebas automatizadas usan HTTP simulado (`Http::fake()`), no una cuenta real.
 
-## Meta — Instagram, WhatsApp Business, Meta Commerce — ⏳ Pendiente (fases futuras)
+## Meta — Instagram, WhatsApp Business API — ⏳ Pendiente (fases futuras)
 
-**No implementado todavía.** Instagram (requiere creación de contenedor de medios antes de publicar, distinto al feed de Facebook), el Agente IA para WhatsApp vía API oficial, y el feed de Meta Commerce se construirán en fases posteriores. Mientras tanto, las publicaciones para Instagram se pueden preparar, programar y descargar desde Redes Sociales, marcándolas como "publicada manualmente" tras publicarlas tú mismo.
+**No implementado todavía.** Instagram (requiere creación de contenedor de medios antes de publicar, distinto al feed de Facebook) y el Agente IA para WhatsApp vía API oficial se construirán en fases posteriores. Mientras tanto, las publicaciones para Instagram se pueden preparar, programar y descargar desde Redes Sociales, marcándolas como "publicada manualmente" tras publicarlas tú mismo; el CRM (Fase 7) ya ofrece un enlace directo de WhatsApp (`wa.me`) para conversaciones manuales.
+
+## Meta Commerce Catalog (feed de productos) — ✅ Listo (Fase 8)
+
+El feed de catálogo (`Meta Commerce → Feed de catálogo`) ya está construido y probado: genera un feed **CSV** y uno **XML** con los productos publicados, listos para registrarse en Meta Commerce Manager como "fuente de datos programada" (Catálogo → Fuentes de datos → Programado). Esta es la forma estándar en que Meta sincroniza catálogos — no requiere llamadas API en tiempo real, solo que Meta pueda leer la URL periódicamente.
+
+Qué SÍ está implementado y probado:
+
+- Feed CSV y XML con los campos obligatorios del estándar de catálogos (id, título, descripción, disponibilidad, condición, precio, enlace, imagen, marca).
+- Filtrado automático: solo se incluyen productos publicados con precio y enlace configurados — sin inventar valores para los que faltan.
+- URL del feed protegida por un token propio de alta entropía, regenerable en cualquier momento para revocar el acceso.
+- Conexión opcional con el catálogo de Meta (ID + token de acceso cifrado) con botón "Probar conexión" que hace una llamada real de solo lectura a la Graph API.
+- Historial de sincronización: registra cada solicitud del feed y cada prueba de conexión.
+
+Qué falta (opcional, depende de NODO 360): las credenciales del catálogo de Meta (ID y token de acceso) solo son necesarias para el botón "Probar conexión" — el feed en sí funciona sin ellas, ya que Meta lo consume directamente desde la URL pública.
 
 ## Google Analytics 4, Meta Pixel y Google Tag Manager — ✅ Listo (Fase 6)
 
@@ -135,7 +149,8 @@ Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor ele
 | Almacenamiento local | ✅ Listo | No |
 | IA generativa — texto | ✅ Listo para configurar (Fase 2) | Sí, clave de API de OpenAI o Google |
 | Meta — Facebook (publicación automática) | ✅ Listo para conectar (Fase 4) | Sí, token de página de Meta |
-| Meta — Instagram/WhatsApp/Commerce | ⏳ Fase futura | Sí, cuando se construya |
+| Meta — Instagram/WhatsApp Business API | ⏳ Fase futura | Sí, cuando se construya |
+| Meta Commerce Catalog (feed CSV/XML) | ✅ Listo (Fase 8) | No (opcional para probar conexión) |
 | LinkedIn / TikTok / X / Google Business (publicación automática) | ⏳ Fase futura | Sí, cuando se construya |
 | Google Ads | ⏳ Fase futura | Sí, cuando se construya |
 | Generador de imágenes (composición) | ✅ Listo (Fase 3) | No |

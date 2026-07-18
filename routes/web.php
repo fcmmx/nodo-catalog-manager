@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AiSettingsController;
+use App\Http\Controllers\Admin\CommerceSettingsController;
 use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Catalog\CategoryController;
 use App\Http\Controllers\Catalog\CollectionController;
+use App\Http\Controllers\Catalog\FeedController;
 use App\Http\Controllers\Catalog\ImportExportController;
 use App\Http\Controllers\Catalog\ProductController;
 use App\Http\Controllers\Crm\ActivityController as CrmActivityController;
@@ -42,6 +44,10 @@ Route::post('/email/baja/{token}', [TrackingController::class, 'unsubscribe'])->
 // Landing pages públicas (sin autenticación): página renderizada y captura de prospectos.
 Route::get('/lp/{slug}', [PublicLandingController::class, 'show'])->name('landing.show');
 Route::post('/lp/{slug}/prospecto', [PublicLandingController::class, 'captureLead'])->name('landing.lead');
+
+// Feed de catálogo para Meta Commerce Manager (sin autenticación, protegido por token propio).
+Route::get('/feed/{token}/catalogo.csv', [FeedController::class, 'csv'])->name('feed.csv');
+Route::get('/feed/{token}/catalogo.xml', [FeedController::class, 'xml'])->name('feed.xml');
 
 Route::redirect('/', '/dashboard');
 
@@ -196,5 +202,13 @@ Route::middleware('auth')->group(function () {
         Route::delete('crm/actividades/{activity}', [CrmActivityController::class, 'destroy'])->name('crm.activities.destroy')->middleware('permission:editar crm');
         Route::resource('crm/etapas', CrmStageController::class)->parameters(['etapas' => 'stage'])->except(['show'])->names('crm.stages');
         Route::resource('crm', DealController::class)->parameters(['crm' => 'deal'])->except(['show']);
+    });
+
+    Route::prefix('admin/comercio')->name('admin.commerce.')->middleware('permission:ver comercio')->group(function () {
+        Route::get('configuracion', [CommerceSettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('configuracion', [CommerceSettingsController::class, 'update'])->name('settings.update')->middleware('permission:configurar comercio');
+        Route::post('configuracion/probar', [CommerceSettingsController::class, 'test'])->name('settings.test')->middleware('permission:configurar comercio');
+        Route::post('configuracion/regenerar-token', [CommerceSettingsController::class, 'regenerateToken'])->name('settings.regenerate-token')->middleware('permission:configurar comercio');
+        Route::get('historial', [CommerceSettingsController::class, 'history'])->name('history');
     });
 });

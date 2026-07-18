@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 7)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 8)
 
 ## Diagrama entidad-relación
 
@@ -370,6 +370,16 @@ erDiagram
         timestamp due_at
         timestamp completed_at
     }
+
+    COMMERCE_SYNC_LOGS {
+        bigint id PK
+        string type
+        string status
+        int products_count
+        text message
+        string ip_address
+        timestamp created_at
+    }
 ```
 
 ## Descripción de tablas
@@ -400,6 +410,7 @@ erDiagram
 | `crm_stages` | Etapas configurables del pipeline de ventas (columnas del tablero Kanban), con color, orden y marcado de "ganada"/"perdida". |
 | `crm_deals` | Oportunidades del CRM: contacto, producto (opcional), etapa actual, valor estimado, origen (manual/landing/importación), estado, responsable asignado y el prospecto de landing page del que se originó (si aplica). |
 | `crm_activities` | Notas, llamadas, reuniones, tareas/recordatorios (con fecha límite y marca de completado) y registros de WhatsApp asociados a una oportunidad del CRM. |
+| `commerce_sync_logs` | Historial de sincronización del feed de catálogo: cada solicitud del feed (CSV/XML) y cada prueba de conexión con Meta, con estado, cantidad de productos, mensaje e IP de origen. |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave

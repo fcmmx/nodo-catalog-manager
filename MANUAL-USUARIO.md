@@ -165,14 +165,24 @@ Menú lateral → **CRM → Pipeline de prospectos** (requiere permiso "ver crm"
 5. Un prospecto capturado en una **landing page** (sección 14) se puede convertir a una oportunidad del CRM con un clic desde su reporte de prospectos (botón "Convertir a CRM") — crea o reutiliza el contacto y enlaza el origen, sin duplicar si ya fue convertido antes.
 6. **CRM → Etapas** te permite crear, editar, reordenar y eliminar etapas (una etapa con prospectos asignados no se puede eliminar hasta moverlos a otra).
 
-## 16. Mi perfil
+## 16. Meta Commerce y feeds
+
+Menú lateral → **Meta Commerce → Feed de catálogo** (requiere permiso "ver comercio").
+
+1. El sistema genera automáticamente dos URL de feed (**CSV** y **XML**), cada una con un token propio que solo tú conoces. Cópiala y regístrala en **Meta Commerce Manager** (Catálogo → Fuentes de datos → Programado) para que Meta sincronice tu catálogo por sí solo, sin intervención manual.
+2. Solo aparecen en el feed los productos **publicados** que tengan precio y un enlace (`url`) configurados — son los dos campos obligatorios de cualquier feed de catálogo real. El panel te muestra cuántos de tus productos activos cumplen los requisitos.
+3. Si la URL del feed se filtra o quieres invalidarla, usa **Regenerar enlace del feed**: genera un token nuevo y deja sin efecto la URL anterior de inmediato.
+4. Opcionalmente, conecta el **ID de catálogo** y el **token de acceso** de tu cuenta de Meta Business Suite para usar el botón **Probar conexión**, que verifica en tiempo real que las credenciales son correctas contra la Graph API de Meta — esto no es necesario para que el feed funcione, ya que Meta lee el catálogo directamente de la URL.
+5. **Meta Commerce → Historial de sincronización** muestra cada vez que el feed fue solicitado (por Meta o cualquier otra plataforma) y cada prueba de conexión, con fecha, estado y cantidad de productos.
+
+## 17. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 17. Modo claro/oscuro
+## 18. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 18. Módulos en fases siguientes
+## 19. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13), **landing pages** (sección 14) y **CRM** (sección 15) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: auditor IA-Ready (SEO/AEO/GEO). La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13), **landing pages** (sección 14), **CRM** (sección 15) y **Meta Commerce y feeds** (sección 16) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
