@@ -154,14 +154,25 @@ Menú lateral → **Landing Pages** (requiere permiso "ver landing").
 7. Al guardar, la landing queda en **Borrador**. Usa **Publicar** para ponerla en línea con su propia URL (`tudominio.com/lp/tu-slug`) — el sistema exige que tenga al menos un titular y una sección de contenido antes de permitir publicarla. Puedes **despublicar** en cualquier momento para quitarla de circulación sin perder su contenido.
 8. **Ver prospectos** muestra el reporte de esa landing: vistas, prospectos capturados, tasa de conversión y el detalle de cada prospecto (incluyendo el origen UTM si llegó desde una campaña). **Descargar QR** genera un código QR listo para imprimir que apunta a la URL pública. **Duplicar** crea una copia en borrador para reutilizarla en otra campaña o producto.
 
-## 15. Mi perfil
+## 15. CRM
+
+Menú lateral → **CRM → Pipeline de prospectos** (requiere permiso "ver crm").
+
+1. El pipeline se muestra como un **tablero Kanban**: cada columna es una etapa (Nuevo, Contactado, Calificado, Propuesta enviada, Negociación, Ganado, Perdido, personalizables desde **CRM → Etapas**). Arrastra una tarjeta a otra columna para cambiar la etapa del prospecto — se guarda al instante, sin recargar la página.
+2. **+ Nuevo prospecto**: elige un contacto existente (créalo primero en Email Marketing → Contactos si no está en la lista), un producto relacionado opcional, la etapa inicial, el valor estimado de la oportunidad, la fecha esperada de cierre y a quién se asigna.
+3. Dentro de la ficha de un prospecto puedes **Marcar ganado** o **Marcar perdido** (con motivo opcional) — esto mueve automáticamente la tarjeta a la etapa correspondiente marcada como "ganada" o "perdida". El botón **Chat por WhatsApp** abre una conversación directa usando el teléfono o WhatsApp del contacto, sin necesidad de conectar la API oficial de WhatsApp Business.
+4. Registra **actividades**: notas, llamadas, reuniones o tareas/recordatorios con fecha límite. Los recordatorios pendientes y vencidos se destacan visualmente; márcalos como completados cuando corresponda.
+5. Un prospecto capturado en una **landing page** (sección 14) se puede convertir a una oportunidad del CRM con un clic desde su reporte de prospectos (botón "Convertir a CRM") — crea o reutiliza el contacto y enlaza el origen, sin duplicar si ya fue convertido antes.
+6. **CRM → Etapas** te permite crear, editar, reordenar y eliminar etapas (una etapa con prospectos asignados no se puede eliminar hasta moverlos a otra).
+
+## 16. Mi perfil
 
 Menú del avatar (esquina superior derecha) → **Mi perfil**: actualiza tu nombre, correo, teléfono y contraseña.
 
-## 16. Modo claro/oscuro
+## 17. Modo claro/oscuro
 
 Icono de sol/luna en la barra superior — tu preferencia se recuerda en el navegador.
 
-## 17. Módulos en fases siguientes
+## 18. Módulos en fases siguientes
 
-Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: CRM, feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13) y **landing pages** (sección 14) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.
+Los siguientes módulos descritos en el proyecto original **no están incluidos todavía** y se entregarán en fases posteriores, cada uno funcional de extremo a extremo: feed de Meta Commerce, auditor IA-Ready. La generación de **texto** con IA (sección 10), el **generador de imágenes** (sección 11), **redes sociales** (sección 12), **email marketing** (sección 13), **landing pages** (sección 14) y **CRM** (sección 15) ya están disponibles. Ver `CHANGELOG.md` para la hoja de ruta.

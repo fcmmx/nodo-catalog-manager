@@ -4,7 +4,7 @@
 
 Sistema web para administrar el catálogo de productos y servicios de **NODO 360 MARKETING TECHNOLOGY**, desarrollado en Laravel 12 / PHP 8.2+ / MySQL, pensado para desplegarse en hosting compartido (Hostinger) sin depender de un servidor Node.js en producción.
 
-## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4 + Fase 5 + Fase 6
+## Estado del proyecto: Fase 1 + Fase 2 + Fase 3 + Fase 4 + Fase 5 + Fase 6 + Fase 7
 
 Este repositorio se desarrolla por fases, acordado con el propietario del sistema. Todo lo incluido está **completo y funcional, sin pantallas simuladas ni botones decorativos**:
 
@@ -55,9 +55,16 @@ Este repositorio se desarrolla por fases, acordado con el propietario del sistem
 - ✅ Formulario de captura de prospectos con seguimiento UTM, integrado opcionalmente con listas de contactos de email marketing (Fase 5)
 - ✅ Reporte de vistas/prospectos/conversión por landing, código QR descargable, duplicar landing page
 
-**103 pruebas automatizadas (PHPUnit)** en total.
+**Fase 7 — CRM**
+- ✅ Pipeline de ventas Kanban con etapas configurables, arrastrar y soltar entre columnas con guardado inmediato
+- ✅ Oportunidades ligadas a contactos de email marketing, con producto y responsable asignado opcionales
+- ✅ Marcar ganado/perdido (con motivo), actividades (notas, llamadas, reuniones, tareas/recordatorios con fecha límite)
+- ✅ Enlace directo de WhatsApp (`wa.me`) por prospecto, sin necesidad de la API oficial
+- ✅ Conversión con un clic de un prospecto de landing page (Fase 6) a una oportunidad del CRM
 
-**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): CRM, feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
+**118 pruebas automatizadas (PHPUnit)** en total.
+
+**No incluido todavía** (módulos completos, pendientes de fases siguientes, ver `CHANGELOG.md`): feed de Meta Commerce, auditor IA-Ready. Estos módulos requieren credenciales de APIs externas que son propiedad de NODO 360 y no se inventan ni simulan en este entregable.
 
 ## Tecnología
 
@@ -85,7 +92,7 @@ resources/views/            Vistas Blade (layouts, catálogo, admin, instalador)
 resources/css/app.css       Fuente de Tailwind (compilar con bin/tailwindcss.exe)
 public/build/app.css        CSS ya compilado y listo para producción
 public/vendor/alpine/       Alpine.js servido localmente
-tests/                      103 pruebas automatizadas
+tests/                      118 pruebas automatizadas
 ```
 
 ## Instalación rápida (desarrollo local)

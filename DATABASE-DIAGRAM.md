@@ -1,4 +1,4 @@
-# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 6)
+# Diagrama de Base de Datos — NODO Catalog Manager (Fase 1 a Fase 7)
 
 ## Diagrama entidad-relación
 
@@ -31,6 +31,13 @@ erDiagram
     CONTACT_LISTS ||--o{ LANDING_PAGES : "recibe prospectos de"
     LANDING_PAGES ||--o{ LANDING_LEADS : "genera"
     CONTACTS ||--o{ LANDING_LEADS : "origina"
+    CONTACTS ||--o{ CRM_DEALS : "es prospecto en"
+    PRODUCTS ||--o{ CRM_DEALS : "referencia"
+    CRM_STAGES ||--o{ CRM_DEALS : "clasifica"
+    USERS ||--o{ CRM_DEALS : "asignado a"
+    LANDING_LEADS ||--o| CRM_DEALS : "convertido en"
+    CRM_DEALS ||--o{ CRM_ACTIVITIES : "registra"
+    USERS ||--o{ CRM_ACTIVITIES : "crea"
 
     USERS {
         bigint id PK
@@ -325,6 +332,44 @@ erDiagram
         string utm_campaign
         string ip_address
     }
+
+    CRM_STAGES {
+        bigint id PK
+        string name
+        string slug UK
+        string color
+        int sort_order
+        boolean is_won
+        boolean is_lost
+    }
+
+    CRM_DEALS {
+        bigint id PK
+        string title
+        bigint contact_id FK
+        bigint product_id FK
+        bigint stage_id FK
+        decimal value
+        string currency
+        string source
+        string status
+        date expected_close_date
+        string lost_reason
+        bigint assigned_to FK
+        bigint created_by FK
+        bigint landing_lead_id FK
+        timestamp deleted_at
+    }
+
+    CRM_ACTIVITIES {
+        bigint id PK
+        bigint deal_id FK
+        bigint user_id FK
+        string type
+        text content
+        timestamp due_at
+        timestamp completed_at
+    }
 ```
 
 ## Descripción de tablas
@@ -352,6 +397,9 @@ erDiagram
 | `email_campaign_sends` | Un registro por cada envío individual de una campaña a un contacto: token único (usado en el seguimiento y la baja), estado, marcas de tiempo de envío/apertura/clic y mensaje de error. |
 | `landing_pages` | Landing pages: producto vinculado (opcional), estado, contenido del hero, secciones por bloques (JSON), llamada a la acción, SEO/Open Graph/datos estructurados, IDs de analítica (GA4/Meta Pixel/GTM), configuración de captura de prospectos, y métricas acumuladas (vistas/prospectos). |
 | `landing_leads` | Prospectos capturados en el formulario de una landing page: datos de contacto, mensaje, atribución UTM, IP, y el contacto de email marketing que se creó a partir de él (si la landing tiene una lista configurada). |
+| `crm_stages` | Etapas configurables del pipeline de ventas (columnas del tablero Kanban), con color, orden y marcado de "ganada"/"perdida". |
+| `crm_deals` | Oportunidades del CRM: contacto, producto (opcional), etapa actual, valor estimado, origen (manual/landing/importación), estado, responsable asignado y el prospecto de landing page del que se originó (si aplica). |
+| `crm_activities` | Notas, llamadas, reuniones, tareas/recordatorios (con fecha límite y marca de completado) y registros de WhatsApp asociados a una oportunidad del CRM. |
 | `sessions`, `cache`, `cache_locks`, `jobs`, `failed_jobs`, `job_batches`, `password_reset_tokens` | Tablas de soporte de Laravel (colas, caché de base de datos si se habilita, recuperación de contraseña). |
 
 ## Relaciones clave
@@ -365,6 +413,7 @@ erDiagram
 - Un **contacto** puede pertenecer a varias **listas**, y una **lista** puede tener varios **contactos** (muchos a muchos).
 - Una **campaña de email** pertenece opcionalmente a una **lista de contactos** (su destinataria) y genera muchos **envíos**, uno por cada **contacto** elegible (suscrito y con consentimiento) de la lista.
 - Una **landing page** pertenece opcionalmente a un **producto** (para la sección "producto destacado") y a una **lista de contactos** (destino de los prospectos capturados), y genera muchos **prospectos**; cada prospecto puede originar opcionalmente un **contacto** de email marketing.
+- Una **oportunidad del CRM** pertenece a un **contacto** y a una **etapa**, y opcionalmente a un **producto**, a un **usuario asignado** y a un **prospecto de landing page** del que se originó; cada oportunidad tiene muchas **actividades**.
 
 ## Generar el diagrama visual
 

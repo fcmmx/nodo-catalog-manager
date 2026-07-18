@@ -26,6 +26,7 @@
                         <th class="px-4 py-3">Mensaje</th>
                         <th class="px-4 py-3">Origen (UTM)</th>
                         <th class="px-4 py-3">Fecha</th>
+                        <th class="px-4 py-3 text-right">CRM</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -37,6 +38,18 @@
                             <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{{ $lead->message ?: '—' }}</td>
                             <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{{ $lead->utm_source ?: '—' }}{{ $lead->utm_campaign ? ' / '.$lead->utm_campaign : '' }}</td>
                             <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{{ $lead->created_at->format('d/m/Y H:i') }}</td>
+                            <td class="px-4 py-3 text-right">
+                                @can('crear crm')
+                                    @if ($lead->crmDeal)
+                                        <a href="{{ route('crm.edit', $lead->crmDeal) }}" class="text-xs font-medium text-blue-600 hover:underline">Ver oportunidad</a>
+                                    @else
+                                        <form method="POST" action="{{ route('crm.convert-lead', $lead) }}">
+                                            @csrf
+                                            <button type="submit" class="text-xs font-medium text-emerald-600 hover:underline">Convertir a CRM</button>
+                                        </form>
+                                    @endif
+                                @endcan
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

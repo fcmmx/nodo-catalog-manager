@@ -1,5 +1,21 @@
 # Changelog — NODO Catalog Manager
 
+## [1.6.0-fase7] — 2026-07-17
+
+Séptima entrega funcional: CRM (Fase 7 de la hoja de ruta).
+
+### Agregado
+
+- Pipeline de ventas en tablero Kanban (`/crm`), con columnas por etapa configurable y tarjetas de prospecto que se arrastran entre columnas (drag & drop nativo) — el cambio de etapa se guarda de inmediato vía una llamada AJAX, sin recargar la página.
+- Etapas del pipeline totalmente configurables (`/crm/etapas`): nombre, color, orden, y marcado de "ganada" o "perdida" — 7 etapas iniciales incluidas (Nuevo, Contactado, Calificado, Propuesta enviada, Negociación, Ganado, Perdido). Una etapa con prospectos asignados no se puede eliminar, para no perder información.
+- Cada prospecto (oportunidad) se liga a un contacto de email marketing (Fase 5) y, opcionalmente, a un producto del catálogo y a un responsable asignado.
+- Marcar una oportunidad como **ganada** o **perdida** (con motivo de pérdida opcional) la mueve automáticamente a la etapa correspondiente y actualiza su estado.
+- Actividades por prospecto: notas, llamadas, reuniones, tareas/recordatorios (con fecha límite) y registro de contacto por WhatsApp — con indicador visual de recordatorios pendientes y vencidos, y marcar como completado.
+- Enlace directo de **WhatsApp** (`wa.me`) en la ficha de cada prospecto, generado a partir del teléfono o WhatsApp del contacto — sin necesidad de la API oficial de WhatsApp Business.
+- Conversión con un clic de un prospecto capturado en una landing page (Fase 6) a una oportunidad del CRM: crea (o reutiliza) el contacto correspondiente y enlaza el origen, evitando duplicados si el mismo prospecto se convierte más de una vez.
+- Permisos granulares nuevos: `ver crm`, `crear crm`, `editar crm`, `eliminar crm`, `asignar crm`.
+- 15 pruebas automatizadas adicionales (118 en total), incluyendo el cambio de etapa, marcar ganado/perdido, actividades y recordatorios, conversión de prospectos de landing y el enlace de WhatsApp.
+
 ## [1.5.0-fase6] — 2026-07-17
 
 Sexta entrega funcional: generador de landing pages (Fase 6 de la hoja de ruta).

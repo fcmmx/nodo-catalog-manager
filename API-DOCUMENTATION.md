@@ -1,4 +1,4 @@
-# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 6)
+# Documentación de Rutas — NODO Catalog Manager (Fase 1 a Fase 7)
 
 ## Alcance
 
@@ -169,6 +169,25 @@ Incluidos en el HTML de cada correo enviado; usan un token propio de alta entrop
 | GET | `/email/clic/{token}?url=...` | Redirección rastreada de clic (URL de destino codificada en base64) |
 | GET | `/email/baja/{token}` | Página pública de confirmación de baja |
 | POST | `/email/baja/{token}` | Confirma la baja: marca al contacto como no suscrito |
+
+## CRM (Fase 7)
+
+| Método | Ruta | Permiso |
+|---|---|---|
+| GET | `/crm` | `ver crm` (tablero Kanban) |
+| GET/POST | `/crm/create` | `crear crm` |
+| PUT/DELETE | `/crm/{id}` | `editar crm` / `eliminar crm` |
+| GET | `/crm/{id}/edit` | `ver crm` |
+| POST | `/crm/{id}/mover` | `editar crm` (JSON: `stage_id`; usado por el arrastrar-y-soltar del tablero) |
+| POST | `/crm/{id}/ganado` | `editar crm` |
+| POST | `/crm/{id}/perdido` | `editar crm` (`lost_reason` opcional) |
+| POST | `/crm/{id}/asignar` | `asignar crm` |
+| POST | `/crm/convertir/{lead}` | `crear crm` (convierte un prospecto de landing page en una oportunidad) |
+| POST | `/crm/{id}/actividades` | `editar crm` |
+| POST | `/crm/actividades/{id}/completar` | `editar crm` |
+| DELETE | `/crm/actividades/{id}` | `editar crm` |
+| GET/POST | `/crm/etapas` | `ver crm` / `crear crm` |
+| GET/PUT/DELETE | `/crm/etapas/{id}` | `editar crm` / `eliminar crm` |
 
 ## Instalador
 

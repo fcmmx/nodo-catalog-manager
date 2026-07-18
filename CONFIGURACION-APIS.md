@@ -1,6 +1,6 @@
 # Configuración de APIs e Integraciones
 
-Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 6). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
+Este documento explica, con honestidad, el estado de cada integración externa en NODO Catalog Manager (Fase 1 a Fase 7). Ninguna credencial ni token ha sido inventado: donde una integración depende de una API externa que aún no se ha construido, se indica explícitamente.
 
 ## Correo (SMTP) — ✅ Listo para configurar
 
@@ -83,6 +83,12 @@ Cada landing page permite pegar su propio ID de **Google Analytics 4** (medició
 
 No implementado. La medición de conversiones de Google Ads requiere una cuenta publicitaria activa y un ID de conversión específico; se integrará cuando NODO 360 defina qué campañas de Ads va a correr.
 
+## CRM y WhatsApp (enlace directo) — ✅ Listo (Fase 7)
+
+El pipeline de ventas (`CRM → Pipeline de prospectos`) no depende de ninguna API externa: el tablero Kanban, las etapas, las oportunidades y las actividades/recordatorios funcionan por completo con datos propios del sistema.
+
+El botón **"Chat por WhatsApp"** de cada prospecto usa el enlace directo `wa.me` (basado en el número de teléfono/WhatsApp del contacto) para abrir una conversación en WhatsApp Web o en la app — **no requiere la API oficial de WhatsApp Business ni ninguna credencial**. Es la misma técnica que usa el botón flotante de WhatsApp de cualquier sitio web. Si en el futuro NODO 360 quiere enviar mensajes automáticos (no solo abrir un chat manual), eso sí requeriría conectar la API oficial de WhatsApp Business (Meta), pendiente de fase futura junto con el resto de integraciones de Meta Commerce.
+
 ## Generador de imágenes — ✅ Listo (Fase 3)
 
 El generador de imágenes (`Imágenes → Generador de imágenes`) compone imágenes comerciales completas (fondo, logotipo, título, subtítulo, precio, CTA, QR, pie de marca) sin depender de ninguna API externa — el motor de composición usa GD (Intervention Image) que ya viene con PHP en Hostinger.
@@ -137,3 +143,6 @@ Qué falta (depende de NODO 360): las credenciales SMTP reales del proveedor ele
 | Email marketing (SMTP/Brevo/Mailgun/SES/SendGrid) | ✅ Listo para configurar (Fase 5) | Sí, credenciales SMTP del proveedor elegido |
 | Landing pages (constructor y publicación) | ✅ Listo (Fase 6) | No |
 | Google Analytics 4 / Meta Pixel / Google Tag Manager (por landing) | ✅ Listo para configurar (Fase 6) | Sí, IDs gratuitos de tus cuentas de Google/Meta |
+| CRM (pipeline, etapas, actividades) | ✅ Listo (Fase 7) | No |
+| WhatsApp — enlace directo (`wa.me`) en el CRM | ✅ Listo (Fase 7) | No |
+| WhatsApp Business API (mensajes automáticos) | ⏳ Fase futura | Sí, cuando se construya |

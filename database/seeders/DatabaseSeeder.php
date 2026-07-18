@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             CollectionsAndProductsSeeder::class,
             ImageTemplatesSeeder::class,
+            CrmStagesSeeder::class,
         ]);
     }
 }

@@ -14,6 +14,9 @@ use App\Http\Controllers\Catalog\CategoryController;
 use App\Http\Controllers\Catalog\CollectionController;
 use App\Http\Controllers\Catalog\ImportExportController;
 use App\Http\Controllers\Catalog\ProductController;
+use App\Http\Controllers\Crm\ActivityController as CrmActivityController;
+use App\Http\Controllers\Crm\DealController;
+use App\Http\Controllers\Crm\StageController as CrmStageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Email\CampaignController;
 use App\Http\Controllers\Email\ContactController;
@@ -180,5 +183,18 @@ Route::middleware('auth')->group(function () {
         Route::get('landing/{landing}/prospectos', [LandingPageController::class, 'leads'])->name('landing.leads');
         Route::get('landing/{landing}/qr', [LandingPageController::class, 'qrCode'])->name('landing.qr');
         Route::resource('landing', LandingPageController::class)->except(['show']);
+    });
+
+    Route::middleware('permission:ver crm')->group(function () {
+        Route::post('crm/convertir/{lead}', [DealController::class, 'convertFromLead'])->name('crm.convert-lead')->middleware('permission:crear crm');
+        Route::post('crm/{deal}/mover', [DealController::class, 'moveStage'])->name('crm.move-stage')->middleware('permission:editar crm');
+        Route::post('crm/{deal}/ganado', [DealController::class, 'markWon'])->name('crm.mark-won')->middleware('permission:editar crm');
+        Route::post('crm/{deal}/perdido', [DealController::class, 'markLost'])->name('crm.mark-lost')->middleware('permission:editar crm');
+        Route::post('crm/{deal}/asignar', [DealController::class, 'assign'])->name('crm.assign')->middleware('permission:asignar crm');
+        Route::post('crm/{deal}/actividades', [CrmActivityController::class, 'store'])->name('crm.activities.store')->middleware('permission:editar crm');
+        Route::post('crm/actividades/{activity}/completar', [CrmActivityController::class, 'complete'])->name('crm.activities.complete')->middleware('permission:editar crm');
+        Route::delete('crm/actividades/{activity}', [CrmActivityController::class, 'destroy'])->name('crm.activities.destroy')->middleware('permission:editar crm');
+        Route::resource('crm/etapas', CrmStageController::class)->parameters(['etapas' => 'stage'])->except(['show'])->names('crm.stages');
+        Route::resource('crm', DealController::class)->parameters(['crm' => 'deal'])->except(['show']);
     });
 });

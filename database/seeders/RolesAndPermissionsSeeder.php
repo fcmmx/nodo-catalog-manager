@@ -27,6 +27,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'contactos' => ['ver', 'crear', 'editar', 'eliminar', 'importar', 'exportar'],
         'campanas' => ['ver', 'crear', 'editar', 'eliminar', 'enviar', 'configurar'],
         'landing' => ['ver', 'crear', 'editar', 'eliminar', 'publicar'],
+        'crm' => ['ver', 'crear', 'editar', 'eliminar', 'asignar'],
     ];
 
     public function run(): void
@@ -53,6 +54,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver contactos', 'crear contactos', 'editar contactos', 'importar contactos', 'exportar contactos',
                 'ver campanas', 'crear campanas', 'editar campanas', 'enviar campanas', 'configurar campanas',
                 'ver landing', 'crear landing', 'editar landing', 'publicar landing',
+                'ver crm', 'crear crm', 'editar crm', 'asignar crm',
             ],
             'Diseñador' => [
                 'ver productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
@@ -65,6 +67,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'ver productos', 'exportar productos', 'ver colecciones', 'ver categorias', 'ver reportes',
                 'ver contactos', 'crear contactos', 'editar contactos',
                 'ver landing',
+                'ver crm', 'crear crm', 'editar crm',
             ],
             'Editor' => [
                 'ver productos', 'crear productos', 'editar productos', 'ver colecciones', 'ver categorias', 'usar ia',
@@ -75,14 +78,14 @@ class RolesAndPermissionsSeeder extends Seeder
             ],
             'Analista' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver actividad', 'ver reportes', 'ver historial ia', 'ver redes',
-                'ver contactos', 'ver campanas', 'ver landing',
+                'ver contactos', 'ver campanas', 'ver landing', 'ver crm',
             ],
             'Cliente' => [
                 'ver productos', 'ver colecciones', 'ver categorias',
             ],
             'Solo lectura' => [
                 'ver productos', 'ver colecciones', 'ver categorias', 'ver usuarios', 'ver configuracion', 'ver actividad', 'ver reportes', 'ver historial ia',
-                'ver contactos', 'ver campanas', 'ver landing',
+                'ver contactos', 'ver campanas', 'ver landing', 'ver crm',
             ],
         ];
 

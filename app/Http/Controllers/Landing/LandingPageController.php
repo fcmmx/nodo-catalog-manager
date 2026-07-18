@@ -140,7 +140,7 @@ class LandingPageController extends Controller
     {
         $this->authorize('ver landing');
 
-        $leads = $landing->leads()->latest()->paginate(30);
+        $leads = $landing->leads()->with('crmDeal')->latest()->paginate(30);
 
         return view('landing.leads', ['landing' => $landing, 'leads' => $leads]);
     }
